@@ -14,6 +14,5 @@ Paket upload ada di `D:\Hamdan\Contents\algobyte-explore\videos\` (`/mnt/d/Hamda
 
 Catatan 001: overlay/narasi memakai kata "terpadat" padahal data = jumlah penduduk (bukan kepadatan per km2); user memutuskan dibiarkan, judul upload memakai "penduduk terbanyak". Kode project video ini sudah dihapus (tidak bisa dirender ulang dari project).
 
-## Backlog ide (belum dikerjakan)
-- Pola yang terbukti laku: jumlah penduduk tiap pulau, UMK tertinggi, peringkat/perbandingan data Indonesia di peta.
-- Campuran peta + grafik lain boleh (user memberi kebebasan).
+## Backlog ide
+Pindah ke `docs/TOPICS.md` (pilar, angle, skor ide, ide dari komentar). Campuran peta + grafik lain boleh (user memberi kebebasan).

@@ -9,3 +9,6 @@ out
 # Local Claude Code settings and temporary audio
 .claude/settings.local.json
 *.pcm
+
+# Public viewer comments (local idea source, not published)
+docs/performance/comments.jsonl
