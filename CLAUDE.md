@@ -7,7 +7,7 @@ File ini sengaja ramping karena dimuat tiap prompt. **Jangan taruh status, TODO,
 Command di `.claude/commands/create-video.md` menjalankan seluruh alur untuk **satu batch 3 video** (tayang 18.45, 19.45, 20.45 WIB, keputusan user): topik, naskah, voice, caption + `.srt`, SFX/musik, visual, thumbnail, metadata, render, revisi, kemas ke D:, bersihkan.
 Ada 3 titik berhenti untuk user (masing-masing untuk seluruh batch): persetujuan naskah+gaya, mendengar voice, pertanyaan revisi. Jangan mengemas/menghapus sebelum user bilang tidak ada revisi.
 
-Analisis: `/analyze-video` **mingguan** (semua video berumur 3+ hari; d28 untuk yang berumur sekitar 28 hari). Hasilnya (hipotesis, bukan aturan) memperbarui `docs/RECIPE.md`, `docs/TOPICS.md`, `docs/PERFORMANCE.md`, dan log.
+Analisis: `/create-video` tahap 0 otomatis menjalankan analisis bila sudah jatuh tempo (user tidak perlu ingat). Manual: `/analyze-video` **mingguan** (semua video berumur 3+ hari; d28 untuk yang berumur sekitar 28 hari). Hasilnya (hipotesis, bukan aturan) memperbarui `docs/RECIPE.md`, `docs/TOPICS.md`, `docs/PERFORMANCE.md`, dan log.
 
 ## Di mana mencari apa
 - **Setiap video = perbaikan dari video sebelumnya:** resep aktif (voice, tempo, durasi, hook, jenis peta, jadwal, dll.) di `docs/RECIPE.md`; pengaturan + metrik per video (JSON) di `docs/production-log.jsonl`. Eksperimen 1-2 variabel per **kelompok** video (6-9 video), bukan per video.
