@@ -10,6 +10,7 @@ Aturan: maksimal 10 butir; perbarui atau hapus yang usang. Tiap butir diberi tin
 
 - H1 (rendah, 2 video): topik jumlah penduduk/wilayah per pulau (19.228 views) jauh lebih laku daripada ekonomi/gaji kota (3.354 views). Rasio like hampir sama (2,4% vs 2,7%), jadi bedanya ada di jangkauan feed, bukan kualitas yang dirasakan penonton. Penyebab belum diketahui: topik, pembuka, durasi (1:18 vs 0:53), atau waktu upload. Butuh data Viewed vs Swiped Away untuk memisahkannya.
 - H2 (rendah): format "peringkat/perbandingan data Indonesia di peta" relatable; uji lagi dengan topik berbeda sebelum menjadikannya pola.
+- H3 (sedang, 2 video, data YouTube Analytics 2026-11-26): **video terlaris (Q_wNa5JrUEk, 19.203 views) 69,6% datang dari Pencarian YouTube**, hanya 16,4% dari feed Shorts; video UMK (3.354 views) 81,2% dari feed Shorts. Artinya keunggulan video penduduk tiap pulau kemungkinan besar karena **permintaan pencarian** ("jumlah penduduk tiap pulau"), bukan karena feed Shorts menyukainya; ini merevisi H1. Retensi justru lebih baik di video UMK (rata-rata ditonton 84,4% vs 68,2%). Aksi: judul/deskripsi memakai frasa yang dicari orang; sebagian topik dipilih karena ada permintaan pencarian yang awet (evergreen).
 
 ## Analisis mingguan (terbaru di atas)
 Jadwal: sekali seminggu, mencakup semua video berumur 3+ hari yang `metrics.d3`-nya kosong dan video berumur sekitar 28 hari (`d28`). Analisis pertama: **2026-11-28/29** (001, 002, 004; plus 003 dan 005 bila sudah tayang 3 hari).

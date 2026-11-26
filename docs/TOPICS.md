@@ -24,7 +24,7 @@ Setiap video dicatat `pillar` dan `angle`-nya di `docs/production-log.jsonl`, su
 - Hindari topik yang memecah belah (SARA, politik praktis); komentar politik (mis. "Hidup ..."), ajakan kekerasan, atau ejekan antardaerah tidak dijadikan ide.
 
 ## 4. Skor ide (1-5 tiap kolom; total menentukan prioritas, bukan perintah)
-Dekat = relatable bagi penonton Indonesia · Kejut = ada fakta yang membalik dugaan · Data = data resmi tersedia dan mudah diverifikasi · Komen = memancing penonton menyebut daerah/pendapat · Momen = terkait berita/kalender saat ini.
+Skor tambahan yang dipertimbangkan: apakah topik **dicari orang di YouTube/Google** (judul memakai frasa pencarian itu; H3: video terlaris 70% dari pencarian). Dekat = relatable bagi penonton Indonesia · Kejut = ada fakta yang membalik dugaan · Data = data resmi tersedia dan mudah diverifikasi · Komen = memancing penonton menyebut daerah/pendapat · Momen = terkait berita/kalender saat ini.
 
 | Ide | Pilar | Angle | Dekat | Kejut | Data | Komen | Momen | Total | Asal |
 |---|---|---|---|---|---|---|---|---|---|
