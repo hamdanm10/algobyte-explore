@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "calm-explainer-01",
+      "tags": [
+        "explainer",
+        "edukasi",
+        "data",
+        "elektronik",
+        "ambient"
+      ],
+      "mood": [
+        "calm",
+        "modern",
+        "curious"
+      ],
+      "bpm": 100,
+      "fit": "narasi edukasi/data di bawah voiceover, energi stabil tanpa perubahan mendadak",
+      "dur": 60.03
+    }
+  ]
+}

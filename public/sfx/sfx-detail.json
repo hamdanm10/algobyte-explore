@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "items": {
+    "whoosh-camera": {
+      "file": "sfx/whoosh-camera.mp3",
+      "prompt": "smooth cinematic whoosh, camera swoosh transition, soft airy, no music",
+      "volume": 0.5,
+      "note": "Mulai tepat saat kamera mulai bergerak.",
+      "source": "ElevenLabs Sound Generation",
+      "created": "2026-11-25"
+    },
+    "rise-grow": {
+      "file": "sfx/rise-grow.mp3",
+      "prompt": "short rising low rumble swell that builds up and stops cleanly, cinematic, no music",
+      "volume": 0.45,
+      "note": "Selaraskan puncaknya dengan akhir animasi naik.",
+      "source": "ElevenLabs Sound Generation",
+      "created": "2026-11-25"
+    },
+    "tick-counter": {
+      "file": "sfx/tick-counter.mp3",
+      "prompt": "fast soft digital ticking counter, rapid light clicks, clean, no music",
+      "volume": 0.3,
+      "note": "Pelan, jangan menutupi voice.",
+      "source": "ElevenLabs Sound Generation",
+      "created": "2026-11-25"
+    },
+    "impact-boom": {
+      "file": "sfx/impact-boom.mp3",
+      "prompt": "deep cinematic impact boom with sub bass, short, punchy, clean tail",
+      "volume": 0.55,
+      "note": "Pakai hemat, 1-2 kali per video supaya tetap terasa.",
+      "source": "ElevenLabs Sound Generation",
+      "created": "2026-11-25"
+    },
+    "pop-ui": {
+      "file": "sfx/pop-ui.mp3",
+      "prompt": "soft UI pop, short clean bubble pop notification, no music",
+      "volume": 0.4,
+      "note": "Cocok untuk muncul teks atau label.",
+      "source": "ElevenLabs Sound Generation",
+      "created": "2026-11-25"
+    },
+    "sting-reveal": {
+      "file": "sfx/sting-reveal.mp3",
+      "prompt": "short uplifting reveal chime sting, bright, positive, 1.5 seconds, no vocals",
+      "volume": 0.45,
+      "note": "Taruh saat teks kesimpulan muncul.",
+      "source": "ElevenLabs Sound Generation",
+      "created": "2026-11-25"
+    }
+  }
+}

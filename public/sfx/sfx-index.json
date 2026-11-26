@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "whoosh-camera",
+      "tags": [
+        "whoosh",
+        "transition",
+        "camera",
+        "swoosh"
+      ],
+      "mood": [
+        "smooth",
+        "neutral"
+      ],
+      "fit": "pergerakan kamera atau pindah lokasi/scene peta",
+      "dur": 1
+    },
+    {
+      "id": "rise-grow",
+      "tags": [
+        "rise",
+        "swell",
+        "build",
+        "grow"
+      ],
+      "mood": [
+        "tension",
+        "anticipation"
+      ],
+      "fit": "batang/objek yang naik atau tumbuh, build-up sebelum reveal",
+      "dur": 1.48
+    },
+    {
+      "id": "tick-counter",
+      "tags": [
+        "tick",
+        "counter",
+        "digital",
+        "click"
+      ],
+      "mood": [
+        "light",
+        "techy"
+      ],
+      "fit": "angka yang berhitung naik",
+      "dur": 1.28
+    },
+    {
+      "id": "impact-boom",
+      "tags": [
+        "impact",
+        "boom",
+        "hit",
+        "bass"
+      ],
+      "mood": [
+        "dramatic",
+        "powerful"
+      ],
+      "fit": "momen reveal penting, hasil peringkat 1, angka mendarat",
+      "dur": 1.48
+    },
+    {
+      "id": "pop-ui",
+      "tags": [
+        "pop",
+        "ui",
+        "appear",
+        "notification"
+      ],
+      "mood": [
+        "light",
+        "friendly"
+      ],
+      "fit": "kartu/teks muncul di layar",
+      "dur": 0.48
+    },
+    {
+      "id": "sting-reveal",
+      "tags": [
+        "sting",
+        "chime",
+        "reveal",
+        "outro"
+      ],
+      "mood": [
+        "uplifting",
+        "positive"
+      ],
+      "fit": "kesimpulan atau penutup video",
+      "dur": 1.48
+    }
+  ]
+}

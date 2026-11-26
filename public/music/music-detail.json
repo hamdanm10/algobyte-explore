@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "items": {
+    "calm-explainer-01": {
+      "file": "music/calm-explainer-01.mp3",
+      "prompt": "Instrumental background music for a short educational data explainer video. Calm yet modern, 100 BPM, soft electronic pads, light plucked synth melody, gentle muted percussion, warm subtle bass, clean minimal mix, steady energy with no sudden changes, instrumental only, sits quietly under a voiceover",
+      "volume": 0.1,
+      "note": "Pelan di bawah voice (sekitar 0,10). Tidak dijamin bisa di-loop mulus: untuk video di atas 60 dtk beri fade.",
+      "model": "music_v2_5",
+      "source": "ElevenLabs Eleven Music (instrumental)",
+      "created": "2026-11-25"
+    }
+  }
+}
