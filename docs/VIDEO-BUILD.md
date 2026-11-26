@@ -14,6 +14,7 @@ import { buildTimeline } from "../../shared/lib/timeline";
 const ORDER = ["hook", "r1", "r2", "outro"] as const;           // sama dengan id di voice-script.json
 export const T = buildTimeline(voice, ORDER);                    // T.segStart / T.segLen / T.total / T.fps / T.voiceLead
 ```
+Default `buildTimeline` = resep aktif (jeda 0,12 dtk, lead 1 frame). Bila video memakai nilai lain, tulis `"timeline": { "gapSeconds": ..., "voiceLead": ... }` di `voice-script.json` dan teruskan ke `buildTimeline` (import JSON-nya), supaya `.srt` tetap sinkron.
 Impor wav langsung (`import hookWav from "./voice/hook.wav"`, tipe di `src/assets.d.ts`). Durasi `<Composition durationInFrames={T.total}>`.
 Titik "angka disebut" / "fakta disebut" diambil dari `voice.json` (`pauses`: `[mulai, selesai]` detik, hasil silencedetect); ukur ulang bila voice dibuat ulang (`gen-voice.mjs <folder> --measure-only`).
 
@@ -35,6 +36,10 @@ Bila perlu data wilayah lain (negara, pulau, kota), unduh Natural Earth lalu bua
 Container `perspective` + `transformStyle: preserve-3d`, `transform: rotateX(tilt) rotateZ(yaw) scale3d(s,s,s) translate(-x,-y)` (pakai `scale3d`, bukan `scale`).
 Tiap provinsi = N lapisan `<svg>` dengan `translateZ(h * i/N)`; warna dinding digradasi. **Potong tiap lapisan ke bbox provinsi** (`box`): lapisan seukuran seluruh peta yang diperbesar membuat Chrome timeout.
 Kamera = daftar "stop" `{f, x, y, s, tilt, yaw, ease}` dan interpolasi per segmen. 16 lapisan sudah cukup halus.
+
+## Subtitle .srt (wajib di paket D:)
+Setelah caption final: `node scripts/gen-srt.mjs src/videos/NNN-slug out/NNN-slug/subtitle.srt` (frasa pendek dari `captions.json`, waktu = rumus `buildTimeline`).
+`package-video.mjs` mewajibkan tepat satu `.srt` di `out/NNN-slug/` dan menyalinnya sebagai `<nama-paket>.srt` (dicek SHA-256). Upload di YouTube Studio > Subtitle > Bahasa Indonesia > Upload file (dengan waktu).
 
 ## Thumbnail
 Komposisi `NNN-thumbnail` dengan durasi sama; render satu frame yang memperlihatkan hasil akhir:

@@ -23,7 +23,9 @@ export const buildTimeline = <Id extends string>(
   opts: { fps?: number; gapSeconds?: number; voiceLead?: number } = {},
 ): Timeline<Id> => {
   const fps = opts.fps ?? 30;
-  const gap = opts.gapSeconds ?? 0.45;
+  // Default = resep aktif (docs/RECIPE.md, tempo rapat). scripts/gen-srt.mjs memakai rumus dan default yang sama:
+  // bila diubah per video, tulis nilainya di voice-script.json "timeline" dan teruskan ke sini.
+  const gap = opts.gapSeconds ?? 0.12;
   const segLen = {} as Record<Id, number>;
   const segStart = {} as Record<Id, number>;
   let at = 0;
@@ -32,7 +34,7 @@ export const buildTimeline = <Id extends string>(
     segStart[id] = at;
     at += segLen[id];
   }
-  return { fps, voiceLead: opts.voiceLead ?? 3, segLen, segStart, total: at };
+  return { fps, voiceLead: opts.voiceLead ?? 1, segLen, segStart, total: at };
 };
 
 // Detik di dalam segmen -> frame (relatif ke awal segmen)

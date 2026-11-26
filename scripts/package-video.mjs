@@ -2,7 +2,7 @@
 // Contoh: node scripts/package-video.mjs 001-top-provinsi-terpadat 001-top-5-provinsi-penduduk-terbanyak
 //
 // Menyalin dari out/<folder-video-di-out>/ ke <EXPORT_DIR>/<nama-paket>/ :
-//   *.mp4 (satu-satunya) -> <nama-paket>.mp4 ; thumbnail.png ; metadata.md
+//   *.mp4 (satu-satunya) -> <nama-paket>.mp4 ; *.srt (satu-satunya, dari scripts/gen-srt.mjs) -> <nama-paket>.srt ; thumbnail.png ; metadata.md
 // lalu memverifikasi SHA-256 tiap file. TIDAK menghapus apa pun. Penghapusan folder project dilakukan terpisah
 // (setelah user bilang tidak ada revisi) dan hanya bila skrip ini mencetak "SEMUA CHECKSUM COCOK".
 // EXPORT_DIR default: /mnt/d/Hamdan/Contents/algobyte-explore/videos  (= D:\Hamdan\Contents\algobyte-explore\videos)
@@ -23,8 +23,11 @@ if (fs.existsSync(to) && fs.readdirSync(to).length > 0) throw new Error(`Folder 
 
 const mp4s = fs.readdirSync(from).filter((f) => f.endsWith(".mp4"));
 if (mp4s.length !== 1) throw new Error(`Harus ada tepat 1 file .mp4 di ${from}, ditemukan ${mp4s.length}`);
+const srts = fs.readdirSync(from).filter((f) => f.endsWith(".srt"));
+if (srts.length !== 1) throw new Error(`Harus ada tepat 1 file .srt di ${from} (buat dengan scripts/gen-srt.mjs), ditemukan ${srts.length}`);
 const files = [
   [mp4s[0], `${name}.mp4`],
+  [srts[0], `${name}.srt`],
   ["thumbnail.png", "thumbnail.png"],
   ["metadata.md", "metadata.md"],
 ];
