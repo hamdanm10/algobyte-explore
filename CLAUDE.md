@@ -10,7 +10,8 @@ Ada 3 titik berhenti untuk user: persetujuan naskah+gaya, mendengar voice, perta
 Setelah video tayang: `/analyze-video [judul]` pada hari ke-3/4 dan ke-28. Hasilnya (hipotesis, bukan aturan) disimpan di `docs/PERFORMANCE.md` dan dibaca oleh `/create-video`.
 
 ## Di mana mencari apa
-- Daftar semua video + gaya visualnya (satu baris per video): `docs/VIDEOS.md`. Gaya visual tiap video harus berbeda.
+- **Setiap video = perbaikan dari video sebelumnya:** resep aktif (voice, tempo, durasi, hook, jenis peta, dll.) di `docs/RECIPE.md`; pengaturan + metrik per video (JSON) di `docs/production-log.jsonl`. Ubah maksimal 1-2 hal per video.
+- Daftar semua video + gaya visualnya (satu baris per video): `docs/VIDEOS.md`. Palet/font/cara reveal tiap video harus berbeda.
 - Konteks channel (niche, tier, tujuan, data video lama, cara ambil data API): `docs/CHANNEL.md`.
 - Cara membangun komposisi: `docs/VIDEO-BUILD.md`. Caption: `docs/CAPTIONS.md`.
 - Praktik terbaik API: `docs/ELEVENLABS-SFX.md`, `docs/ELEVENLABS-MUSIC.md` (juga lisensi + kredit), `docs/GEMINI-TTS-VOICE.md`.

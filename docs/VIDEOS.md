@@ -1,7 +1,7 @@
 # Daftar video
 
 Satu baris per video. Folder video di project dihapus setelah dikemas ke D:, jadi baris ini adalah satu-satunya catatan di project.
-Kolom "Gaya visual" dipakai agar video berikutnya sengaja dibuat BERBEDA (menghindari kesan template massal).
+Kolom "Gaya visual" dipakai agar "kulit" visual (palet, font, reveal) video berikutnya sengaja dibuat BERBEDA (menghindari kesan template massal). Pengaturan yang dioptimalkan dari video ke video ada di `docs/RECIPE.md`; nilai lengkap per video + metrik di `docs/production-log.jsonl`.
 Paket upload ada di `D:\Hamdan\Contents\algobyte-explore\videos\` (`/mnt/d/Hamdan/Contents/algobyte-explore/videos/`).
 
 | No | Nama paket di D: | Topik | Gaya visual | Status |

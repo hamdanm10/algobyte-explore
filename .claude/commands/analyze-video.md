@@ -22,15 +22,20 @@ Analisis performa satu video Algobyte Explore yang sudah tayang: `$ARGUMENTS` (k
    - **Subscriber yang didapat** dari video ini.
    Bila user menempel screenshot, baca gambarnya. Jangan mengarang angka yang tidak diberikan.
 4. **Analisis dengan skill `youtube`:** sub-skill `analyze` (corong, kelas grafik retensi, kesehatan sumber trafik, aksi prioritas). Bila Viewed vs Swiped Away di bawah 60% jalankan juga `hook`. Patokan dari `references/shorts-playbook.md`: swipe-away 75%+ bagus, di bawah 60% = pembuka lemah; penyelesaian 70%+ = promosi agresif; di atas 100% rata-rata ditonton = ada loop.
-5. **Hubungkan dengan keputusan produksi video itu**: baca `docs/VIDEOS.md` (gaya visual) dan catatan video di `docs/PERFORMANCE.md` (apa yang sedang diuji: pembuka, durasi, caption, musik, topik). Pisahkan yang bisa dijelaskan data dari yang hanya dugaan.
+5. **Hubungkan dengan keputusan produksi video itu**: baca baris video di `docs/production-log.jsonl` (pengaturan yang dipakai + field `testing`), `docs/RECIPE.md` (resep saat itu), `docs/VIDEOS.md` (gaya visual), dan catatan di `docs/PERFORMANCE.md`. Bandingkan dengan video lain di log **pada umur yang sama** (d3 dengan d3, d28 dengan d28) dan beri catatan bila video tayang di hari yang sama. Pisahkan yang bisa dijelaskan data dari yang hanya dugaan.
 6. **Tulis hasil ke `docs/PERFORMANCE.md`:**
    - tambahkan/perbarui blok video di "Catatan per video" (maks sekitar 10 baris: tanggal analisis, umur video, angka kunci, diagnosis, hipotesis, aksi),
    - perbarui "Pelajaran aktif" (maks 10 butir; ubah keyakinan, gabung, atau hapus yang usang),
    - perbarui tabel "Jadwal analisis" (centang yang sudah, tambahkan video baru dengan tanggal hari ke-3/4 dan ke-28).
-7. **Laporkan ke user** (ringkas): angka kunci, 1 diagnosis utama, **maksimal 3 hal konkret untuk diuji di video berikutnya** (tiap hal disertai metrik yang akan dicek), dan batas keyakinan. Tanya apakah ide baru perlu masuk backlog di `docs/VIDEOS.md` atau langsung dilanjutkan dengan `/create-video`.
+6b. **Perbarui log dan resep (agar video berikutnya membaik):**
+   - Di `docs/production-log.jsonl`, isi baris video itu: `youtubeId`, `uploadedAt`, `uploadTime` bila diketahui, dan `metrics.d3` atau `metrics.d28` = `{views, likePct, commentPct, viewedPct, avgViewPct, avgViewSec, dropSec, subsGained, trafficShortsFeedPct}` (null untuk angka yang tidak diberikan user; jangan mengarang).
+   - Jalankan **aturan keputusan** di `docs/RECIPE.md` bagian 5 untuk tiap hal di `testing`: naikkan/turunkan label, masukkan ke resep tetap, atau kembalikan; ubah tabel resep (bagian 2), status di "Antrian eksperimen", dan tambah butir di "Riwayat perubahan resep" dengan tanggal dan alasan berbasis angka.
+   - Usulkan 1-2 eksperimen berikutnya di "Antrian eksperimen" (prioritas: dimensi dengan dampak terbesar pada metrik terlemah).
+7. **Laporkan ke user** (ringkas): angka kunci, 1 diagnosis utama, **perubahan resep** (apa yang naik/turun label atau dikembalikan, dan alasannya), **maksimal 3 hal konkret untuk diuji di video berikutnya** (tiap hal disertai metrik yang akan dicek), dan batas keyakinan. Tanya apakah ide baru perlu masuk backlog di `docs/VIDEOS.md` atau langsung dilanjutkan dengan `/create-video`.
 
 ## Cara hasilnya dipakai
-- `/create-video` tahap 1 membaca "Pelajaran aktif" untuk memilih topik dan hook (sebagai hipotesis, bukan perintah).
+- `/create-video` memulai setiap video dari `docs/RECIPE.md` (resep aktif) dan hanya mengubah 1-2 hal yang diuji; "Pelajaran aktif" dipakai untuk memilih topik dan hook (sebagai hipotesis, bukan perintah).
+- `docs/production-log.jsonl` adalah data mentah yang dibandingkan antar video (pengaturan vs metrik).
 - Hook, durasi, dan format video berikutnya dirancang untuk menguji hipotesis yang tertulis.
-- Tabel gaya visual di `docs/VIDEOS.md` dipakai bersama hasil ini untuk menilai gaya mana yang jangkauannya baik, tanpa menghilangkan variasi (agar tidak terlihat template).
+- Dimensi visual yang bisa dibandingkan (tema terang/gelap, jenis peta, caption, dll.) dinilai lewat log dan masuk resep bila terbukti; "kulit" visual (palet, font, reveal) tetap selalu divariasikan agar tidak terlihat template.
 - Snapshot `docs/performance/snapshots.jsonl` memantau pertumbuhan subscriber dan views menuju syarat monetisasi.
