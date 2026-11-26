@@ -58,3 +58,7 @@ docs/                   dokumentasi; .claude/commands/ command project; .env ber
 - Pesan commit **bahasa Inggris** dengan prefiks Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `chore:` ...).
 - **Jangan menambahkan Claude sebagai author/co-author** (tanpa trailer `Co-Authored-By`).
 - Jangan commit `.env` atau hasil render (`out/`).
+
+## YouTube API
+- **Tidak ada upload otomatis via API** (keputusan user 2026-11-26): upload dan penjadwalan selalu manual oleh user di YouTube Studio. Jangan membuat skrip upload atau meminta scope upload.
+- `YOUTUBE_API_KEY` hanya untuk data publik (views, like, komentar). Metrik privat (retensi, sumber trafik, subscriber didapat) butuh OAuth read-only (`yt-analytics.readonly`) bila nanti disiapkan; sampai itu, user menempel angka dari YouTube Studio.
