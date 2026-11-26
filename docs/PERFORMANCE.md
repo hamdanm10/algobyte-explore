@@ -1,6 +1,6 @@
 # Performa video dan pelajaran
 
-Diisi oleh `/analyze-video`. `/create-video` tahap 1 membaca bagian "Pelajaran aktif" untuk memilih topik, hook, dan format.
+Diisi oleh `/analyze-video` (mingguan). `/create-video` tahap 1 membaca bagian "Pelajaran aktif" sebagai hipotesis. Keputusan resep ada di `docs/RECIPE.md`, skor topik di `docs/TOPICS.md`, angka per video di `docs/production-log.jsonl`.
 Statistik publik otomatis: `node --env-file=.env scripts/channel-stats.mjs` (snapshot di `docs/performance/snapshots.jsonl`).
 Metrik privat (Viewed vs Swiped Away, retensi, sumber trafik) ditempel user dari YouTube Studio saat analisis.
 
@@ -11,7 +11,11 @@ Aturan: maksimal 10 butir; perbarui atau hapus yang usang. Tiap butir diberi tin
 - H1 (rendah, 2 video): topik jumlah penduduk/wilayah per pulau (19.228 views) jauh lebih laku daripada ekonomi/gaji kota (3.354 views). Rasio like hampir sama (2,4% vs 2,7%), jadi bedanya ada di jangkauan feed, bukan kualitas yang dirasakan penonton. Penyebab belum diketahui: topik, pembuka, durasi (1:18 vs 0:53), atau waktu upload. Butuh data Viewed vs Swiped Away untuk memisahkannya.
 - H2 (rendah): format "peringkat/perbandingan data Indonesia di peta" relatable; uji lagi dengan topik berbeda sebelum menjadikannya pola.
 
-## Jadwal analisis
+## Analisis mingguan (terbaru di atas)
+Jadwal: sekali seminggu, mencakup semua video berumur 3+ hari yang `metrics.d3`-nya kosong dan video berumur sekitar 28 hari (`d28`). Analisis pertama: **2026-11-28/29** (001, 002, 004; plus 003 dan 005 bila sudah tayang 3 hari).
+(belum ada)
+
+## Jadwal awal K0 (sebelum sistem mingguan)
 | Video | Upload | Analisis 1 (hari ke-3/4: Shorts bisa naik sampai hari ke-4) | Analisis 2 (sekitar hari ke-28: dorongan algoritma meluruh sekitar 28-30 hari) |
 |---|---|---|---|
 | 001 Top 5 Provinsi Penduduk Terbanyak [zDx3ss62WdE] | 2026-11-25 | 2026-11-28/29 | sekitar 2026-12-23 |
@@ -22,7 +26,9 @@ Aturan: maksimal 10 butir; perbarui atau hapus yang usang. Tiap butir diberi tin
 
 Catatan 2026-11-26: `/analyze-video` dijalankan saat umur 0,8-0,9 hari, ditunda atas keputusan user. Angka API hari ke-1 (hanya acuan, belum dianalisis): 001 1.308 views (like 1,1%), 002 1.607 views (like 1,1%), 004 1.379 views (like 1,7%, komentar 0,29%). Subscriber 99 ke 101. Ketiganya tayang di hari yang sama, jadi saling bersaing di feed penonton yang sama; perhitungkan saat membandingkan.
 
-## Catatan per video (terbaru di atas)
+## Catatan per batch (terbaru di atas)
+Mulai video 006: satu blok singkat per batch harian (tanggal tayang, video + slot, kelompok, yang diuji). Blok per video di bawah = kelompok K0 (001-005).
+
 ### 005 Sabang–Merauke di Eropa (42,5 dtk)
 - Status: dikemas ke D:, menunggu upload.
 - Hal yang diuji: topik wilayah/geografi (H1) dengan format **overlay skala/penggaris** antarbenua, bukan peringkat (H2 tidak dipakai, jadi pembanding); pembuka visual langsung (globe Eropa + penggaris berhenti di "?") dengan pertanyaan "sampai mana?"; **voice tempo cepat** (speed 1,15 + atempo 1,1, jeda antar segmen 0,12 dtk; preferensi user) dibanding 001-004 yang lebih lambat; durasi lebih pendek (42,5 dtk); penutup ajakan komentar "barat atau timur?"; gaya terang atlas + globe 3D berputar.

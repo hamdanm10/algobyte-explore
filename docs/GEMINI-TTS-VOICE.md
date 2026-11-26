@@ -37,7 +37,7 @@ Teks yang dikirim dianggap **transkrip yang dibaca apa adanya**. Instruksi biasa
 ## 3. Voice prebuilt (30)
 Zephyr Bright, Puck Upbeat, Charon Informative, Kore Firm, Fenrir Excitable, Leda Youthful, Orus Firm, Aoede Breezy, Callirrhoe Easy-going, Autonoe Bright, Enceladus Breathy, Iapetus Clear, Umbriel Easy-going, Algieba Smooth, Despina Smooth, Erinome Clear, Algenib Gravelly, Rasalgethi Informative, Laomedeia Upbeat, Achernar Soft, Alnilam Firm, Schedar Even, Gacrux Mature, Pulcherrima Forward, Achird Friendly, Zubenelgenubi Casual, Vindemiatrix Gentle, Sadachbia Lively, Sadaltager Knowledgeable, Sulafat Warm.
 - Kandidat narator edukasi energik (penilaian sendiri dari deskripsi): Puck, Laomedeia, Fenrir, Sadachbia, Zephyr, Achird, Leda. Narator tenang: Sulafat, Charon, Rasalgethi.
-- Sekarang pakai **Kore (Firm)**. Uji voice lain di https://aistudio.google.com/generate-speech sebelum memutuskan ganti. Satu channel sebaiknya konsisten satu voice.
+- Voice aktif channel ditentukan di `docs/RECIPE.md` (sekarang ElevenLabs, bukan Gemini). Kore (Firm) dipakai 001-002 dan tetap jadi cadangan gratis. Satu channel sebaiknya konsisten satu voice.
 - Voice Indonesia khusus bisa dicari lewat `GET /v1beta/voices` (filter `language_code`). Belum diperiksa.
 
 ## 4. Format output

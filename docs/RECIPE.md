@@ -1,7 +1,8 @@
 # Resep aktif (titik awal setiap video baru)
 
 Dibaca oleh `/create-video` SEBELUM merancang video; diperbarui oleh `/analyze-video` dan oleh masukan user.
-Setiap video = resep ini + **maksimal 1-2 perubahan yang diuji** (ditulis di "Antrian eksperimen" dan di log).
+Produksi: **batch 3 video per hari**, tayang **18.45, 19.45, 20.45 WIB**. Setiap video = resep ini + perubahan yang sedang diuji oleh **kelompok eksperimen** (bagian 4).
+Topik dan tema: `docs/TOPICS.md`.
 Data mentah per video: `docs/production-log.jsonl` (satu baris JSON per video, pengaturan + metrik). Cerita/diagnosis: `docs/PERFORMANCE.md`.
 
 Label asal tiap pengaturan:
@@ -31,26 +32,40 @@ Label asal tiap pengaturan:
 | Musik | `calm-explainer-01`, volume katalog (sekitar 0,10) | [hipotesis] | 002 |
 | SFX | 8-14 cue: whoosh tiap pindah kamera, pop untuk label, impact di klimaks, sting di penutup | [hipotesis] | 005 |
 | Judul | pertanyaan/klaim + angka atau tempat yang dikenal, maks sekitar 60 karakter | [hipotesis] | 005 |
-| Upload | **jeda minimal 2-3 hari antar video**, catat jam upload | **[user-disarankan]** (001/002/004 tayang di hari yang sama, data bercampur) | - |
+| Jadwal upload | **3 video/hari, 18.45, 19.45, 20.45 WIB** (dijadwalkan di YouTube Studio; tanggal+jam ditulis di `metadata.md`); slot dicatat di log (`uploadSlot`) | **[user]** 2026-11-26; Claude boleh mengusulkan jam lain dari data, user yang memutuskan | - |
+| Ekspor | `.mp4`, `.srt` (bahasa Indonesia), `thumbnail.png`, `metadata.md` ke D: | **[user]** 2026-11-26 | - |
 
-## 3. Selalu divariasikan (wajib beda tiap video, agar tidak terlihat template)
-Palet warna, pasangan font, cara reveal/animasi khas, dekorasi latar. Cek kolom "Gaya visual" di `docs/VIDEOS.md` dan field `visual` di log.
-Dimensi di bagian 2 boleh SAMA antar video (justru itu yang dioptimalkan); yang divariasikan adalah "kulit" visualnya.
+## 3. Gaya visual: referensi dari data + variasi
+- **Selalu map animation** (peta sebagai visual utama; boleh dicampur grafik lain). Di dalam itu, gaya yang benar-benar baru selalu boleh **[user]**.
+- **Gaya referensi:** video yang views/retensinya jauh di atas median (aturan bagian 5) masuk tabel di bawah. Video berikutnya boleh memakai **keluarga gaya** itu (jenis peta, tema, gerak kamera, cara reveal), tetapi "kulit"-nya wajib berbeda.
+- **Kulit visual wajib beda dari 10 video terakhir:** kombinasi palet + pasangan font + elemen khas (dekorasi/reveal) tidak boleh sama dengan salah satu dari 10 video terakhir di `docs/VIDEOS.md`/log. Dalam satu batch harian, 3 video berbeda kulitnya.
+- Sebagian batch boleh mencoba gaya baru (porsi eksplorasi, sama seperti topik di `docs/TOPICS.md`).
 
-## 4. Antrian eksperimen (1-2 per video, urut prioritas)
-| Video | Yang diuji (satu variabel) | Pembanding | Metrik utama | Status |
-|---|---|---|---|---|
-| 005 | tempo cepat + hook visual langsung + format penggaris | 001-004 | Viewed vs Swiped Away, % rata-rata ditonton | menunggu upload |
-| 006 | (diisi saat `/create-video`) | resep di atas | | |
-Ide berikutnya: durasi 35 dtk vs 42 dtk; tema gelap vs terang dengan topik serupa; judul pertanyaan vs judul angka; topik ekonomi (menguji ulang H1).
+| Gaya referensi | Dari video | Alasan (angka) | Dipakai lagi di |
+|---|---|---|---|
+| (belum ada; diisi `/analyze-video` setelah ada data d3) | | | |
+
+## 4. Antrian eksperimen (per KELOMPOK, bukan per video)
+Dengan 3 video/hari, hasil hari ke-3 sebuah video baru ada setelah sekitar 9 video berikutnya dibuat. Karena itu satu eksperimen = **1-2 variabel yang sama untuk satu kelompok 6-9 video (2-3 hari)**, dibandingkan dengan kelompok sebelumnya; diputuskan di analisis mingguan.
+Topik/pilar boleh berbeda di dalam kelompok (dicatat di log), tetapi variabel yang diuji harus konsisten di seluruh kelompok.
+
+| Kelompok | Video | Yang diuji | Pembanding | Metrik utama | Status |
+|---|---|---|---|---|---|
+| K0 | 001-005 | campuran (variabel bercampur; tempo cepat mulai 005) | - | baseline | menunggu data d3 |
+| K1 | 006-0xx (batch pertama) | (diisi saat `/create-video` batch pertama) | K0 | | |
+Ide berikutnya: durasi 35 dtk vs 42 dtk; tema gelap vs terang; judul pertanyaan vs judul angka; slot jam (otomatis terukur dari `uploadSlot`).
 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
 Metrik utama Shorts: **Viewed vs Swiped Away** (pembuka) dan **% rata-rata ditonton** (isi). Pendukung: views hari ke-3/4, subscriber didapat, komentar.
-- Perubahan yang diuji **lebih baik** dari median video sebelumnya (Viewed vs Swiped Away +5 poin atau lebih, atau % ditonton +8 poin atau lebih): label naik ke [terbukti 1]. Bila terulang di video lain: [terbukti 2] dan **masuk resep tetap**.
+- Bandingkan **median kelompok** dengan median kelompok sebelumnya (minimal 5 video berdata per kelompok; kurang dari itu tetap [hipotesis]).
+- Kelompok yang diuji **lebih baik** (median Viewed vs Swiped Away +5 poin atau lebih, atau median % ditonton +8 poin atau lebih): label naik ke [terbukti 1]. Bila terulang di kelompok lain: [terbukti 2] dan **masuk resep tetap**.
+- **Gaya referensi / sekuel topik:** video dengan views d3 di atas 2x median 10 video terakhir DAN Viewed vs Swiped Away tidak di bawah median.
+- **Slot jam:** setelah minimal 2 minggu, bandingkan median views d3 per slot (18.45/19.45/20.45); usulkan jam lain ke user hanya bila selisihnya konsisten.
 - **Lebih buruk** dengan selisih yang sama: kembalikan ke nilai sebelumnya, catat di "Riwayat" sebagai "sudah dicoba, kurang".
 - Selisih kecil: tetap [hipotesis], boleh diuji lagi dengan topik lain.
 - Masukan user selalu menang atas data; data hanya mengusulkan perubahan, user memutuskan di GATE 1.
-- Jangan bandingkan video yang tayang di hari yang sama tanpa catatan; bandingkan di umur yang sama (hari ke-3/4 atau ke-28).
+- Bandingkan di umur yang sama (d3 dengan d3, d28 dengan d28). Video dalam satu hari saling berebut penonton: bandingkan per kelompok, bukan video satu lawan satu.
 
 ## 6. Riwayat perubahan resep (terbaru di atas)
+- 2026-11-26: jadwal 3 video/hari (18.45, 19.45, 20.45 WIB) dan ekspor .srt [user]; eksperimen dinilai per kelompok mingguan; gaya visual boleh mengikuti gaya referensi dari data, kulit wajib beda dari 10 video terakhir; aturan "jeda 2-3 hari" dihapus.
 - 2026-11-26 (005): tempo dipercepat dan jeda dipangkas atas permintaan user; resep pertama ditulis dari catatan 001-005.
