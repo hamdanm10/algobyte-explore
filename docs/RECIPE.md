@@ -56,9 +56,9 @@ Topik/pilar boleh berbeda di dalam kelompok (dicatat di log), tetapi variabel ya
 Ide berikutnya: durasi 35 dtk vs 42 dtk; tema gelap vs terang; judul pertanyaan vs judul angka; slot jam (otomatis terukur dari `uploadSlot`).
 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
-Metrik utama Shorts: **Viewed vs Swiped Away** (pembuka) dan **% rata-rata ditonton** (isi). Pendukung: views hari ke-3/4, subscriber didapat, komentar.
+Metrik utama Shorts: **pembuka** = Viewed vs Swiped Away bila user menempelnya, kalau tidak proksi otomatis `engagedPct` (engagedViews / views) + retensi 10% pertama; **isi** = % rata-rata ditonton. Bandingkan antar kelompok dengan metrik pembuka yang SAMA jenisnya. Pendukung: views hari ke-3/4, subscriber didapat, komentar.
 - Bandingkan **median kelompok** dengan median kelompok sebelumnya (minimal 5 video berdata per kelompok; kurang dari itu tetap [hipotesis]).
-- Kelompok yang diuji **lebih baik** (median Viewed vs Swiped Away +5 poin atau lebih, atau median % ditonton +8 poin atau lebih): label naik ke [terbukti 1]. Bila terulang di kelompok lain: [terbukti 2] dan **masuk resep tetap**.
+- Kelompok yang diuji **lebih baik** (median metrik pembuka +5 poin atau lebih, atau median % ditonton +8 poin atau lebih): label naik ke [terbukti 1]. Bila terulang di kelompok lain: [terbukti 2] dan **masuk resep tetap**.
 - **Gaya referensi / sekuel topik:** video dengan views d3 di atas 2x median 10 video terakhir DAN Viewed vs Swiped Away tidak di bawah median.
 - **Slot jam:** setelah minimal 2 minggu, bandingkan median views d3 per slot (18.45/19.45/20.45); usulkan jam lain ke user hanya bila selisihnya konsisten.
 - **Lebih buruk** dengan selisih yang sama: kembalikan ke nilai sebelumnya, catat di "Riwayat" sebagai "sudah dicoba, kurang".
