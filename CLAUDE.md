@@ -61,4 +61,4 @@ docs/                   dokumentasi; .claude/commands/ command project; .env ber
 
 ## YouTube API
 - **Tidak ada upload otomatis via API** (keputusan user 2026-11-26): upload dan penjadwalan selalu manual oleh user di YouTube Studio. Jangan membuat skrip upload atau meminta scope upload.
-- `YOUTUBE_API_KEY` hanya untuk data publik (views, like, komentar). Metrik privat (retensi, sumber trafik, subscriber didapat) butuh OAuth read-only (`yt-analytics.readonly`) bila nanti disiapkan; sampai itu, user menempel angka dari YouTube Studio.
+- `YOUTUBE_API_KEY` hanya untuk data publik (views, like, komentar). Metrik privat: `scripts/yt-analytics.mjs` (OAuth read-only `yt-analytics.readonly`, login sekali dengan `scripts/yt-oauth.mjs`, token di `.env`). Viewed vs Swiped Away tidak ada di API: user menempelnya dari YouTube Studio.

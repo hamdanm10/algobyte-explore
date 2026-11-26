@@ -12,3 +12,4 @@ out
 
 # Public viewer comments (local idea source, not published)
 docs/performance/comments.jsonl
+docs/performance/analytics-latest.json
