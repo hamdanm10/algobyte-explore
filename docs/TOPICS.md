@@ -19,6 +19,7 @@ Setiap video dicatat `pillar` dan `angle`-nya di `docs/production-log.jsonl`, su
 ## 3. Aturan pemilihan Shorts (per batch 2 video sehari) [user 2026-11-27]
 - **1 video "eksploitasi"**: kontennya **mirip dengan video yang views-nya terbanyak** sejauh ini (pilar + angle yang sama, tempat/data lain), dipilih dari data: metrik d3/d28 di `docs/production-log.jsonl` dan tabel bagian 5; selama belum ada d3, pakai views terbaru dari `scripts/channel-stats.mjs` (termasuk 2 video lama).
 - **1 video "eksplorasi"**: di luar pola itu (pilar atau angle yang belum/kurang dicoba), tetapi **tetap map animation**.
+- Gaya visual ikut pembagian yang sama: eksploitasi memakai gaya referensi dari data, eksplorasi bereksperimen gaya/tata letak (`docs/RECIPE.md` bagian 3).
 - Dua video dalam satu hari berbeda pilar ATAU berbeda angle (jangan topik nyaris sama, agar tidak saling makan penonton).
 - Video yang views-nya jauh di atas median boleh dibuat **sekuel** (angle sama, tempat/data lain), maksimal 1 sekuel per batch.
 - Data harus resmi (BPS, BIG, Kemendagri, Kemnaker, BMKG, Badan Bahasa, dsb.) atau dihitung sendiri dengan cara yang dijelaskan di video; cek makna istilah.

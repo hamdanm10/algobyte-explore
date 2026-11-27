@@ -1,6 +1,7 @@
 # Pola membangun komposisi video
 
 Dibaca saat tahap Visual di `/create-short-video` dan `/create-long-video`. Folder video dihapus setelah dikemas ke D:, jadi pola reusable ada di sini dan di `src/shared/`.
+**Koordinat dan tata letak di bagian gaya per video (002, 003, 004, 005, 006, 007) adalah CONTOH teknik, bukan template:** tata letak wajib divariasikan (`docs/RECIPE.md` bagian 3). Video 002-007 hampir semuanya memakai susunan yang sama (judul atas, peta di jendela kotak tengah, panel angka, caption): jangan diulang kecuali video eksploitasi yang sengaja mengikuti gaya referensi.
 Bagian di bawah ditulis untuk **Shorts 1080x1920** (koordinat, area aman, watermark). Untuk video panjang 1920x1080, bagian "Video panjang" di akhir menimpa aturan tata letak Shorts; teknik peta/kamera/gaya tetap bisa dipakai.
 
 ## Struktur folder video `src/videos/NNN-slug/`
