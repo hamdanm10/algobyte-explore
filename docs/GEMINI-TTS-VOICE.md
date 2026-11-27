@@ -82,7 +82,7 @@ Keputusan user 2026-11-27: voice **video panjang** dibuat user sendiri di Google
 1. Buka https://aistudio.google.com, pilih fitur **Generate speech** (mode single-speaker).
 2. Pilih model dan voice yang tercatat di `docs/RECIPE-LONG.md` (sama untuk semua bab dan semua video).
 3. Isi **style instructions** di kolom gaya (BUKAN di dalam teks naskah, kalau tidak ikut terbaca; lihat bagian 2 dan 6). Contoh: "Narrate in Indonesian like a curious, relaxed documentary storyteller, warm and clear, moderate pace."
-4. Tempel teks satu segmen (satu bab) apa adanya, generate, dengarkan, lalu unduh.
+4. Tempel teks satu segmen (satu bab) apa adanya, generate, dengarkan, lalu unduh. **Tanpa tag ekspresi** (`<laugh>` dsb.): dicoba di L001, hasilnya jelek menurut user [user 2026-11-27]. **Satu audio per bab**, jangan satu audio penuh: file penuh dari AI Studio di L001 punya header WAV salah (byterate 96000 untuk mono 24 kHz, jadi `ffmpeg -ss` meleset 2x) dan sulit dipotong.
 5. Simpan sebagai `src/videos/long-NNN-slug/voice-raw/<id>.wav` (nama = id segmen; mp3/m4a juga diterima). Ulangi per segmen.
 6. Beri tahu Claude; segmen yang salah baca cukup dibuat ulang lalu diimpor dengan `--only=<id>`.
 - Satu segmen maks sekitar 2 menit: makin panjang teks, makin besar risiko suara berubah di tengah. Output model maks sekitar 11 menit per permintaan.

@@ -29,7 +29,11 @@ Catatan 2026-11-26: `/analyze-video` dijalankan saat umur 0,8-0,9 hari, ditunda 
 
 ## Video panjang (terbaru di atas)
 Satu blok singkat per video panjang (`L00N`, tayang Sabtu 19.00 WIB): Short sumber, yang diuji (kelompok LKn), yang dilihat di d7/d28.
-(belum ada)
+
+### L001 Kenapa Lebih dari Separuh Orang Indonesia Tinggal di Pulau Jawa? (7:20)
+- Tayang: Sabtu 2026-12-05 19.00 WIB (dijadwalkan manual). Short sumber: video lama Q_wNa5JrUEk "Jumlah Penduduk Tiap Pulau" (19.300 views, 70% dari pencarian).
+- Diuji (LK0, baseline): resep video panjang pertama: hook 28 dtk + 5 bab + penutup, voice AI Studio (gemini-3.8-flash-tts, Charon), tempo 2,21 kata/dtk setelah hening dirapatkan, caption per frasa di layar [user], 2 trek musik berganti, sekitar 15 SFX, judul frasa pencarian.
+- Yang dilihat d7/d28: CTR impresi (thumbnail B, peta titik + "Kenapa semua di Jawa?"), rata-rata durasi ditonton dan % ditonton, retensi detik ke-30 (hook), titik jatuh retensi per bab (chapter), sumber trafik (pencarian "kenapa pulau jawa padat" vs disarankan), subscriber per 1.000 views, komentar "Jawa atau luar Jawa / pindah ke mana".
 
 ## Catatan per batch Shorts (terbaru di atas)
 Shorts. Mulai video 006: satu blok singkat per batch harian (2 video: tanggal tayang, video + slot 18.45/19.45, kelompok, yang diuji). Blok per video di bawah = kelompok K0 (001-005).

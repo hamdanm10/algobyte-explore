@@ -18,12 +18,13 @@ Label asal: **[user]** = keputusan user (hanya diubah bila user minta) · **[ter
 |---|---|---|
 | Topik | dikembangkan dari **Short dengan performa terbaik** (views/komentar tertinggi di log atau `channel-stats.mjs`) yang belum pernah dijadikan video panjang; video panjang dari topik baru baru dicoba setelah ada beberapa video panjang berdata | **[user]** 2026-11-27 |
 | Voice | **dibuat user sendiri di Google AI Studio** (Gemini TTS, gratis): Claude menyerahkan naskah siap tempel, user menyimpan audio di project, Claude memprosesnya (`scripts/import-voice.mjs`). Tidak memakai ElevenLabs | **[user]** 2026-11-27 |
-| Model + voice AI Studio | dipilih di GATE 1 video panjang pertama lalu dikunci di sini agar konsisten antar video (kandidat narator: Charon "Informative", Sadaltager "Knowledgeable", Sulafat "Warm", Achird "Friendly"); style instruction sama di semua bab | belum dipilih |
+| Model + voice AI Studio | **`gemini-3.8-flash-tts` + Charon** ("Informative"), sama untuk semua bab dan semua video; style instruction: "Narrate in Indonesian like a curious, relaxed documentary storyteller: warm and clear, moderately brisk pace, short natural pauses only between sentences." | **[user]** 2026-11-27 (GATE 1 L001) |
+| Ekspresi voice | **tanpa tag ekspresi** (`<laugh>`, `<breath>`, dsb.) di naskah video panjang: hasilnya jelek menurut user. Naskah AI Studio = teks bersih; ekspresi hanya dari style instruction + tanda baca. Satu file audio per bab (jangan satu audio penuh) | **[user]** 2026-11-27 |
 | Durasi | 6-10 menit (video pertama: 6-8 menit), naskah sekitar 900-1.400 kata | [hipotesis] |
 | Tempo | 2,2-2,6 kata/dtk, bercerita (lebih santai dari Shorts); jeda antar bab 0,6 dtk (`timeline.gapSeconds` di `voice-script.json`) | [hipotesis] |
 | Struktur | hook 20-30 dtk (pertanyaan besar + janji jawaban + cuplikan visual terbaik) · 4-6 bab, tiap bab dibuka pertanyaan baru dan ada "hal baru" tiap 60-90 dtk · penutup: ringkasan, pertanyaan komentar, sumber data | [hipotesis] |
 | Segmen audio | **satu file per bab** (`hook`, `b1`...`bN`, `outro`), maksimal sekitar 2 menit per file supaya mudah diulang bila ada salah baca | [hipotesis] |
-| Caption | **tanpa caption per kata di video**; `.srt` wajib; teks penegas di layar hanya untuk angka/istilah kunci | [hipotesis] |
+| Caption | **caption WAJIB tampil di video** (`<PhraseCaptions>`: frasa dipotong di jeda asli audio, maks 7 kata, dari `captions.json`; kata yang diucapkan disorot; di bawah tepat di atas zona bilah progres: kotak bawah sekitar y 950) **+ `.srt` wajib**; elemen lain jangan memakai area caption (y sekitar 880-960) | **[user]** 2026-11-27 |
 | Musik | 2-3 trek katalog berganti per babak (bukan satu trek 60 dtk diulang 10 menit), volume sekitar 0,08, diredam saat narasi padat | [hipotesis] |
 | SFX | hemat: transisi bab, reveal angka penting, sekitar 2-4 cue per menit | [hipotesis] |
 | Judul | frasa yang dicari orang + janji jawaban, maks sekitar 70 karakter (H3: pencarian menggerakkan video terlaris) | [hipotesis] |
@@ -42,7 +43,7 @@ Satu video per minggu, jadi satu kelompok = **1 variabel untuk 3-4 video panjang
 
 | Kelompok | Video | Yang diuji | Pembanding | Metrik utama | Status |
 |---|---|---|---|---|---|
-| LK0 | L001-L003 | baseline (resep di atas) | - | baseline | belum mulai |
+| LK0 | L001-L003 | baseline (resep di atas) | - | baseline | berjalan: L001 (2026-12-05) |
 Ide berikutnya: durasi 6 vs 10 menit; hook dengan cuplikan hasil akhir vs pertanyaan saja; satu voice AI Studio vs voice lain.
 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
@@ -53,4 +54,7 @@ Metrik utama video panjang: **klik** = CTR impresi thumbnail (hanya dari YouTube
 - Masukan user selalu menang atas data.
 
 ## 6. Riwayat perubahan resep (terbaru di atas)
+- 2026-11-27: caption wajib tampil di video panjang [user] (sebelumnya [hipotesis] tanpa caption di layar, hanya .srt); L001 dirender ulang dengan caption.
+- 2026-11-27: tag ekspresi DIHAPUS dari naskah video panjang [user: hasilnya jelek]; sempat diwajibkan di hari yang sama. Audio wajib per bab.
+- 2026-11-27: model + voice AI Studio dikunci: gemini-3.8-flash-tts + Charon [user, disetujui di GATE 1 L001].
 - 2026-11-27: resep video panjang pertama ditulis [user]: 1 per minggu Sabtu 19.00 WIB, topik dari Short terbaik, voice dibuat user di Google AI Studio, ekspor ke `videos\long\`.

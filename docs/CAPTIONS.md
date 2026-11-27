@@ -7,6 +7,7 @@ Komponen: `src/shared/components/Captions.tsx` (caption per kata, kata yang diuc
 - Whisper lokal lewat `@remotion/whisper-webgpu` (gratis, tanpa API key). Butuh GPU WebGPU: di WSL ini jalan lewat `/dev/dxg` (`canUseWhisperWebGpu()` mengembalikan `supported: true`). Model `small` multilingual diunduh sekali lalu di-cache; bahasa `indonesian`. Jangan pakai model `.en`.
 - Format `Caption` dari `@remotion/captions` (`text` diawali spasi, `startMs`, `endMs`, ...). Halaman kata dibentuk `createTikTokStyleCaptions` (`combineMs` 700 = 1-3 kata per halaman).
 - **Koreksi ejaan memakai naskah:** kata Whisper yang mirip kata naskah (jarak edit kecil) diganti ejaan naskah ("Pringkat" -> "Peringkat", "Sumatra" -> "Sumatera"); "Provinsi"+"mu" digabung. Angka tetap dari Whisper ("12,4 juta" lebih enak dibaca daripada "dua belas koma empat"). Titik/koma akhir kata dibuang, tanda tanya/seru dipertahankan.
+- **Video panjang:** jalankan per bab, satu proses per bab dengan `nice` + `timeout` (lihat `docs/VIDEO-BUILD.md` "Pelajaran L001"); satu file panjang sekaligus membuat PC macet. Kata yang tidak ter-snap (ejaan jauh, angka terpecah "132" + ",000") dibetulkan manual dengan mengganti/menggabung token tanpa mengubah `startMs`.
 - Hasil teruji pada voice Kore (Gemini 2.5 TTS): audio TTS bersih sehingga hampir semua kata benar.
 
 ## Pemakaian
