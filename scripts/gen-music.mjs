@@ -27,6 +27,30 @@ const MUSIC = [
     volume: 0.1,
     note: "Pelan di bawah voice (sekitar 0,10). Tidak dijamin bisa di-loop mulus: untuk video di atas 60 dtk beri fade.",
   },
+  {
+    id: "documentary-earth-01",
+    prompt:
+      "Instrumental background music for a long-form geography documentary about land, volcanoes and history. Warm and curious, 84 BPM, soft felt piano, gentle marimba and metallophone pattern with a subtle Southeast Asian gamelan color, airy strings pad, light hand percussion, deep soft bass, organic and calm, steady energy with no drops, instrumental only, sits quietly under a voiceover",
+    seconds: 60,
+    bpm: 84,
+    tags: ["dokumenter", "video-panjang", "geografi", "sejarah", "organik"],
+    mood: ["warm", "curious", "calm"],
+    fit: "babak awal video panjang (tanah, gunung api, sejarah): hangat dan organik di bawah narasi",
+    volume: 0.08,
+    note: "Untuk video panjang: diulang per babak dengan fade. Volume sekitar 0,08 di bawah narasi.",
+  },
+  {
+    id: "documentary-pulse-01",
+    prompt:
+      "Instrumental background music for a long-form data documentary about migration, cities and economy. Modern and hopeful, 96 BPM, pulsing soft synth arpeggio, light electronic drums with brushed hi-hats, warm analog bass, subtle piano chords, gradual sense of movement and progress, clean minimal mix, steady energy with no sudden drops, instrumental only, sits quietly under a voiceover",
+    seconds: 60,
+    bpm: 96,
+    tags: ["dokumenter", "video-panjang", "ekonomi", "kota", "migrasi"],
+    mood: ["hopeful", "modern", "driving"],
+    fit: "babak akhir video panjang (perpindahan penduduk, ekonomi, proyeksi): rasa bergerak/maju di bawah narasi",
+    volume: 0.08,
+    note: "Untuk video panjang: diulang per babak dengan fade. Volume sekitar 0,08 di bawah narasi.",
+  },
 ];
 
 const only = process.argv.find((a) => a.startsWith("--only="))?.slice(7).split(",");

@@ -9,6 +9,24 @@
       "model": "music_v2_5",
       "source": "ElevenLabs Eleven Music (instrumental)",
       "created": "2026-11-25"
+    },
+    "documentary-earth-01": {
+      "file": "music/documentary-earth-01.mp3",
+      "prompt": "Instrumental background music for a long-form geography documentary about land, volcanoes and history. Warm and curious, 84 BPM, soft felt piano, gentle marimba and metallophone pattern with a subtle Southeast Asian gamelan color, airy strings pad, light hand percussion, deep soft bass, organic and calm, steady energy with no drops, instrumental only, sits quietly under a voiceover",
+      "volume": 0.08,
+      "note": "Untuk video panjang: diulang per babak dengan fade. Volume sekitar 0,08 di bawah narasi.",
+      "model": "music_v2_5",
+      "source": "ElevenLabs Eleven Music (instrumental)",
+      "created": "2026-11-27"
+    },
+    "documentary-pulse-01": {
+      "file": "music/documentary-pulse-01.mp3",
+      "prompt": "Instrumental background music for a long-form data documentary about migration, cities and economy. Modern and hopeful, 96 BPM, pulsing soft synth arpeggio, light electronic drums with brushed hi-hats, warm analog bass, subtle piano chords, gradual sense of movement and progress, clean minimal mix, steady energy with no sudden drops, instrumental only, sits quietly under a voiceover",
+      "volume": 0.08,
+      "note": "Untuk video panjang: diulang per babak dengan fade. Volume sekitar 0,08 di bawah narasi.",
+      "model": "music_v2_5",
+      "source": "ElevenLabs Eleven Music (instrumental)",
+      "created": "2026-11-27"
     }
   }
 }
