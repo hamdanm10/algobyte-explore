@@ -46,7 +46,7 @@ WAV 24 kHz mono 16-bit (non-streaming 3.8). Model lama mengembalikan PCM mentah 
 ## 5. Harga dan kuota
 - 3.8-flash-tts (sampai 31 Des 2026): input $0,50 per 1 juta token, output audio $9 per 1 juta token (sekitar $0,00225 per 10 detik). **Naik dua kali lipat per 1 Jan 2027.** Ada tier gratis.
 - Batas rate tidak tertulis di halaman ini. Kami pernah kena `429` (kuota) di 3.8 saat membuat 7 segmen beruntun, makanya skrip memberi jeda 7 detik per permintaan.
-- Syarat lisensi/penggunaan audio hasil Gemini untuk monetisasi **belum diteliti**. Cek Gemini API Additional Terms sebelum monetisasi.
+- Lisensi dan monetisasi: lihat bagian 9 (diteliti 2026-11-27).
 
 ## 6. Jebakan dan temuan kami
 - **Model 3.8 membacakan awalan instruksi** saat kami pakai awalan gaya di dalam teks: 7 segmen jadi 116 detik (harusnya sekitar 50 detik). Karena itu dipindah ke model 2.5, yang tidak membacakannya.
@@ -66,3 +66,23 @@ Dipakai saat kuota Gemini preview habis (HTTP 429 setelah beberapa permintaan) d
 - `speed` 1,0 membuat tempo lambat (honeypie 1,8 kata/dtk). 1,15 pada honeypie = 2,1 kata/dtk; Putra 1,1 = 2,5 kata/dtk. Naskah 105 kata: 50 dtk (honeypie) vs 42 dtk (Putra).
 - ElevenLabs hampir tanpa hening antar kalimat, jadi `pauses` di `voice.json` bisa kosong; ambil timing dari kata Whisper (`captions.json`). Loudness antar segmen bisa selisih 3-4 LU: ratakan dengan gain per segmen ke -16 LUFS + `alimiter=limit=0.84` (tanpa kredit).
 - Whisper kadang salah di kata pendek (mis. "muat" jadi "Mwad", "1,4" jadi "1.4"): periksa `captions.json` dan betulkan manual.
+
+## 9. Google AI Studio untuk video panjang (manual oleh user, gratis)
+Keputusan user 2026-11-27: voice **video panjang** dibuat user sendiri di Google AI Studio; Claude hanya menyiapkan naskah (`/create-long-video` tahap 3) dan memproses audionya (`scripts/import-voice.mjs`). Shorts tetap ElevenLabs (`docs/RECIPE.md`).
+
+**Lisensi dan monetisasi (dibaca 2026-11-27; bukan nasihat hukum):**
+- Gemini API Additional Terms (https://aistudio.google.com/docs/terms, berlaku 23 Mar 2026): "Google won't claim ownership over that content"; pengguna bertanggung jawab atas pemakaian hasilnya. **Tidak ada larangan pemakaian komersial**, tetapi juga tidak ada lisensi komersial tertulis. AI Studio ditujukan untuk "professional or business purposes" dan pengguna wajib 18+.
+- **Tier gratis:** Google boleh memakai prompt dan hasilnya untuk mengembangkan produk dan **ditinjau manusia**: "Do not submit sensitive, confidential, or personal information". Naskah video data publik aman; jangan masukkan data pribadi. (Bila akun AI Studio terhubung ke Cloud Billing aktif, berlaku aturan data berbayar.)
+- Generative AI Prohibited Use Policy: dilarang meniru orang nyata tanpa pengungkapan atau mengaku buatan manusia untuk menipu. Narator generik untuk konten edukasi tidak termasuk.
+- Kebijakan monetisasi YouTube (inauthentic content): narasi AI tidak dilarang; yang ditolak adalah konten generik/template massal atau sekadar membacakan tulisan orang lain. Naskah orisinal + visual buatan sendiri + angle cerita = aman, sejalan dengan kekhawatiran di `CLAUDE.md`.
+- Pengungkapan "konten diubah/sintetis" YouTube (https://support.google.com/youtube/answer/14328491): wajib untuk konten AI yang **tampak realistis** (orang nyata seolah berkata/berbuat, rekaman nyata diubah, adegan realistis palsu, musik AI sebagai fokus). Narator AI tanpa orang nyata di video tidak disebut wajib (tafsiran, bukan aturan tertulis). Pengungkapan tidak memengaruhi monetisasi. Default `metadata.md`: **"Konten yang diubah/sintetis: Tidak"** untuk peta/grafik buatan sendiri dengan narator AI; **"Ya"** bila video menampilkan orang nyata/kejadian nyata yang dibuat AI.
+- Belum dicek: apakah Indonesia tercantum di daftar wilayah AI Studio (kenyataannya bisa dipakai user), dan apakah audio TTS diberi penanda SynthID.
+
+**Langkah di AI Studio (ditulis ke `naskah-ai-studio.md` tiap video):**
+1. Buka https://aistudio.google.com, pilih fitur **Generate speech** (mode single-speaker).
+2. Pilih model dan voice yang tercatat di `docs/RECIPE-LONG.md` (sama untuk semua bab dan semua video).
+3. Isi **style instructions** di kolom gaya (BUKAN di dalam teks naskah, kalau tidak ikut terbaca; lihat bagian 2 dan 6). Contoh: "Narrate in Indonesian like a curious, relaxed documentary storyteller, warm and clear, moderate pace."
+4. Tempel teks satu segmen (satu bab) apa adanya, generate, dengarkan, lalu unduh.
+5. Simpan sebagai `src/videos/long-NNN-slug/voice-raw/<id>.wav` (nama = id segmen; mp3/m4a juga diterima). Ulangi per segmen.
+6. Beri tahu Claude; segmen yang salah baca cukup dibuat ulang lalu diimpor dengan `--only=<id>`.
+- Satu segmen maks sekitar 2 menit: makin panjang teks, makin besar risiko suara berubah di tengah. Output model maks sekitar 11 menit per permintaan.

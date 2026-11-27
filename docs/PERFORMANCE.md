@@ -1,6 +1,6 @@
 # Performa video dan pelajaran
 
-Diisi oleh `/analyze-video` (mingguan). `/create-video` tahap 1 membaca bagian "Pelajaran aktif" sebagai hipotesis. Keputusan resep ada di `docs/RECIPE.md`, skor topik di `docs/TOPICS.md`, angka per video di `docs/production-log.jsonl`.
+Diisi oleh `/analyze-video` (mingguan). `/create-short-video` dan `/create-long-video` tahap 1 membaca bagian "Pelajaran aktif" sebagai hipotesis. Pelajaran berlaku untuk Shorts kecuali ditandai "(panjang)". Keputusan resep ada di `docs/RECIPE.md` (Shorts) dan `docs/RECIPE-LONG.md` (video panjang), skor topik di `docs/TOPICS.md`, angka per video di `docs/production-log.jsonl`.
 Statistik publik otomatis: `node --env-file=.env scripts/channel-stats.mjs` (snapshot di `docs/performance/snapshots.jsonl`).
 Metrik privat (Viewed vs Swiped Away, retensi, sumber trafik) ditempel user dari YouTube Studio saat analisis.
 
@@ -13,7 +13,7 @@ Aturan: maksimal 10 butir; perbarui atau hapus yang usang. Tiap butir diberi tin
 - H3 (sedang, 2 video, data YouTube Analytics 2026-11-26): **video terlaris (Q_wNa5JrUEk, 19.203 views) 69,6% datang dari Pencarian YouTube**, hanya 16,4% dari feed Shorts; video UMK (3.354 views) 81,2% dari feed Shorts. Artinya keunggulan video penduduk tiap pulau kemungkinan besar karena **permintaan pencarian** ("jumlah penduduk tiap pulau"), bukan karena feed Shorts menyukainya; ini merevisi H1. Retensi justru lebih baik di video UMK (rata-rata ditonton 84,4% vs 68,2%). Aksi: judul/deskripsi memakai frasa yang dicari orang; sebagian topik dipilih karena ada permintaan pencarian yang awet (evergreen).
 
 ## Analisis mingguan (terbaru di atas)
-Jadwal: sekali seminggu, mencakup semua video berumur 3+ hari yang `metrics.d3`-nya kosong dan video berumur sekitar 28 hari (`d28`). Analisis pertama: **2026-11-28/29** (001, 002, 004; plus 003 dan 005 bila sudah tayang 3 hari).
+Jadwal: sekali seminggu, mencakup Short berumur 3+ hari yang `metrics.d3`-nya kosong, video panjang berumur 7+ hari yang `metrics.d7`-nya kosong, dan video berumur sekitar 28 hari (`d28`). Analisis pertama: **2026-11-28/29** (001, 002, 004; plus 003 dan 005 bila sudah tayang 3 hari).
 (belum ada)
 
 ## Jadwal awal K0 (sebelum sistem mingguan)
@@ -27,8 +27,12 @@ Jadwal: sekali seminggu, mencakup semua video berumur 3+ hari yang `metrics.d3`-
 
 Catatan 2026-11-26: `/analyze-video` dijalankan saat umur 0,8-0,9 hari, ditunda atas keputusan user. Angka API hari ke-1 (hanya acuan, belum dianalisis): 001 1.308 views (like 1,1%), 002 1.607 views (like 1,1%), 004 1.379 views (like 1,7%, komentar 0,29%). Subscriber 99 ke 101. Ketiganya tayang di hari yang sama, jadi saling bersaing di feed penonton yang sama; perhitungkan saat membandingkan.
 
-## Catatan per batch (terbaru di atas)
-Mulai video 006: satu blok singkat per batch harian (tanggal tayang, video + slot, kelompok, yang diuji). Blok per video di bawah = kelompok K0 (001-005).
+## Video panjang (terbaru di atas)
+Satu blok singkat per video panjang (`L00N`, tayang Sabtu 19.00 WIB): Short sumber, yang diuji (kelompok LKn), yang dilihat di d7/d28.
+(belum ada)
+
+## Catatan per batch Shorts (terbaru di atas)
+Shorts. Mulai video 006: satu blok singkat per batch harian (2 video: tanggal tayang, video + slot 18.45/19.45, kelompok, yang diuji). Blok per video di bawah = kelompok K0 (001-005).
 
 ### 005 Sabang–Merauke di Eropa (42,5 dtk)
 - Status: dikemas ke D:, menunggu upload.

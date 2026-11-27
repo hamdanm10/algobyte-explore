@@ -1,11 +1,14 @@
 // Usage: node scripts/package-video.mjs <folder-video-di-out> <nama-paket>
-// Contoh: node scripts/package-video.mjs 001-top-provinsi-terpadat 001-top-5-provinsi-penduduk-terbanyak
+// Contoh Short:  node scripts/package-video.mjs 006-slug 006-nama-video          -> videos/short/006-nama-video/
+// Contoh panjang: node scripts/package-video.mjs long-001-slug 001-nama-video    -> videos/long/001-nama-video/
+// Jenis video ditentukan dari folder sumber: diawali "long-" = video panjang, selain itu = Short.
 //
 // Menyalin dari out/<folder-video-di-out>/ ke <EXPORT_DIR>/<nama-paket>/ :
 //   *.mp4 (satu-satunya) -> <nama-paket>.mp4 ; *.srt (satu-satunya, dari scripts/gen-srt.mjs) -> <nama-paket>.srt ; thumbnail.png ; metadata.md
 // lalu memverifikasi SHA-256 tiap file. TIDAK menghapus apa pun. Penghapusan folder project dilakukan terpisah
 // (setelah user bilang tidak ada revisi) dan hanya bila skrip ini mencetak "SEMUA CHECKSUM COCOK".
-// EXPORT_DIR default: /mnt/d/Hamdan/Contents/algobyte-explore/videos  (= D:\Hamdan\Contents\algobyte-explore\videos)
+// Tujuan default: /mnt/d/Hamdan/Contents/algobyte-explore/videos/{short|long}  (= D:\Hamdan\Contents\algobyte-explore\videos\{short|long})
+// EXPORT_DIR (opsional) menimpa folder tujuan lengkap.
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -14,7 +17,10 @@ const [src, name] = process.argv.slice(2);
 if (!src || !name) throw new Error("Pakai: node scripts/package-video.mjs <folder-video-di-out> <nama-paket>");
 if (!/^\d{3}-[a-z0-9-]+$/.test(name)) throw new Error(`Nama paket harus berformat 001-nama-video (huruf kecil, angka, strip): "${name}"`);
 
-const exportRoot = process.env.EXPORT_DIR ?? "/mnt/d/Hamdan/Contents/algobyte-explore/videos";
+const kind = src.startsWith("long-") ? "long" : "short";
+if (kind === "short" && !/^\d{3}-/.test(src)) throw new Error(`Folder sumber harus NNN-slug (Short) atau long-NNN-slug (video panjang): "${src}"`);
+const exportRoot = process.env.EXPORT_DIR ?? `/mnt/d/Hamdan/Contents/algobyte-explore/videos/${kind}`;
+console.log(`Jenis: ${kind === "long" ? "video panjang" : "Short"} -> ${exportRoot}`);
 const from = path.join("out", src);
 const to = path.join(exportRoot, name);
 if (!fs.existsSync(exportRoot)) throw new Error(`Folder tujuan tidak ada: ${exportRoot}`);

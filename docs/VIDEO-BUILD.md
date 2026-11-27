@@ -1,6 +1,7 @@
 # Pola membangun komposisi video
 
-Dibaca saat tahap Visual di `/create-video`. Folder video dihapus setelah dikemas ke D:, jadi pola reusable ada di sini dan di `src/shared/`.
+Dibaca saat tahap Visual di `/create-short-video` dan `/create-long-video`. Folder video dihapus setelah dikemas ke D:, jadi pola reusable ada di sini dan di `src/shared/`.
+Bagian di bawah ditulis untuk **Shorts 1080x1920** (koordinat, area aman, watermark). Untuk video panjang 1920x1080, bagian "Video panjang" di akhir menimpa aturan tata letak Shorts; teknik peta/kamera/gaya tetap bisa dipakai.
 
 ## Struktur folder video `src/videos/NNN-slug/`
 `voice-script.json`, `voice.json` + `voice/*.wav` (dari gen-voice), `captions.json` (dari gen-captions), `data.ts` (timeline + data), `index.tsx` (komposisi),
@@ -78,3 +79,14 @@ Kertas biru keabuan `#e6edf0` bergrid halus, jendela peta 1000x900 di y 480 (sud
 - Proyeksi: `geoOrthographic().scale(r).rotate([-lon,-lat]).clipAngle(90)`, 241 negara digambar ulang tiap frame masih cepat (1275 frame sekitar 1 menit). Kamera = stop `{f, center, r}`; pusat diinterpolasi dengan `slerpLonLat`, r logaritmik, dan sedikit zoom out di tengah perpindahan agar terasa berputar. r 1100-1150 = sekitar 5.000 km memenuhi lebar 1000 px.
 - **Perbandingan jarak/ukuran yang jujur:** `src/shared/lib/sphere.ts` → `rigidMover(from, fromDir, to, toDir)` = rotasi kaku di bola (kuaternion, t 0..1) yang memindahkan garis/siluet tanpa mengubah panjang/bentuk; `arcFrom(a, b, km)` = titik lingkaran besar sepanjang km; `distKm` haversine. Label disembunyikan bila titik di balik globe (dot product dengan pusat kamera).
 - Label pin dekat tepi jendela terpotong: atur `anchor`/`dx`, dan geser pusat kamera bila ujung penggaris keluar jendela.
+
+## Video panjang (16:9, `/create-long-video`)
+- **Nama:** folder `src/videos/long-NNN-slug/` dan `out/long-NNN-slug/`; komposisi `long-NNN-slug` (1920x1080, 30 fps) dan `long-NNN-thumbnail` (1280x720, durasi 1 frame cukup). Awalan `long-` wajib: `package-video.mjs` memakai awalan ini untuk mengemas ke `videos\long\`.
+- **Voice:** file dari AI Studio di `voice-raw/<id>.wav` (milik user, jangan diubah) diproses `scripts/import-voice.mjs` menjadi `voice/<id>.wav` + `voice.json` (format sama dengan `gen-voice.mjs`). `voice-script.json` memuat `"format": "long"` dan `"timeline": { "gapSeconds": 0.6, "voiceLead": 1 }`; teruskan nilai yang sama ke `buildTimeline` agar `.srt` dan chapters sinkron.
+- **Struktur:** satu komponen per bab (`Hook.tsx`, `B1.tsx`, ...), masing-masing di `<Sequence name="b1" from={T.segStart.b1} durationInFrames={T.segLen.b1}>`, sehingga tiap bab bisa dicek terpisah dengan `remotion still --frame=<T.segStart.b1 + n>`. Transisi bab: kartu judul bab 1-1,5 dtk di dalam jeda antar segmen (judul bab = judul chapter di deskripsi).
+- **Waktu reveal:** dari `pauses` di `voice.json` (jeda kalimat Gemini cukup jelas) atau dari kata di `captions.json` (Whisper) untuk angka tertentu.
+- **Tata letak 16:9:** area aman judul/teks di tengah 1700x900; jangan taruh teks penting di 120 px bawah (bilah progres pemutar). Watermark: `<Watermark width={260} marginX={48} marginY={40} />` (kiri atas), cadangkan x di bawah 340, y di bawah 100. Teks penegas di layar (angka/istilah kunci) menggantikan caption per kata.
+- **Chapters:** `00:00` = awal hook; bab berikutnya = `T.segStart.<id> / 30` dibulatkan ke bawah ke detik, ditulis `m:ss`. Minimal 3 chapter dan masing-masing minimal 10 dtk (aturan YouTube).
+- **Thumbnail 1280x720:** peta + 1 angka/kontras besar, maks 4 kata, teks besar terbaca di ukuran kecil, tanpa watermark. Render opsi dengan `npx remotion still long-NNN-thumbnail out/long-NNN-slug/thumbnail-a.png`.
+- **Musik:** `<Music>` per babak di dalam `<Sequence>` berbeda (2-3 trek) agar tidak satu loop 60 dtk selama 10 menit.
+- **Render:** sekitar 18.000 frame untuk 10 menit; jalankan di background, cek dulu tiap bab dengan still. Bila peta berat (3D/titik banyak), uji render satu bab dengan `--frames=<awal>-<akhir>` sebelum render penuh.

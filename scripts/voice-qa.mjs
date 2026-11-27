@@ -44,7 +44,12 @@ for (const r of rows) {
 const wpsAvg = rows.reduce((a, r) => a + r.wps, 0) / rows.length;
 const lufsSpread = Math.max(...rows.map((r) => r.lufs)) - Math.min(...rows.map((r) => r.lufs));
 console.log(`\nrata-rata tempo ${wpsAvg.toFixed(2)} kata/dtk; selisih loudness antar segmen ${lufsSpread.toFixed(1)} LU${lufsSpread > 3 ? " (!) tidak konsisten antar segmen" : " (konsisten)"}`);
-console.log(`total durasi voice: ${rows.reduce((a, r) => a + r.dur, 0).toFixed(1)} dtk (batas Shorts yang disarankan: di bawah 60 dtk)`);
+const totalSec = rows.reduce((a, r) => a + r.dur, 0);
+console.log(
+  cfg.format === "long"
+    ? `total durasi voice: ${totalSec.toFixed(1)} dtk (${(totalSec / 60).toFixed(1)} menit; target video panjang ada di docs/RECIPE-LONG.md)`
+    : `total durasi voice: ${totalSec.toFixed(1)} dtk (batas Shorts yang disarankan: di bawah 60 dtk)`,
+);
 
 // Pratinjau gabungan untuk didengar
 const inputs = cfg.segments.flatMap((s) => ["-i", path.join(dir, "voice", `${s.id}.wav`)]);

@@ -1,6 +1,6 @@
 # Strategi topik dan tema konten
 
-Dibaca `/create-video` tahap 1 (memilih topik untuk satu batch 3 video); diperbarui `/analyze-video` (skor pilar/angle dari data, ide dari komentar).
+Dibaca `/create-short-video` tahap 1 (memilih topik untuk satu batch 2 Short) dan `/create-long-video` tahap 1 (bagian 7); diperbarui `/analyze-video` (skor pilar/angle dari data, ide dari komentar).
 Setiap video dicatat `pillar` dan `angle`-nya di `docs/production-log.jsonl`, supaya bisa dipisahkan: yang laku itu **topiknya** atau **cara berceritanya**.
 
 ## 1. Pilar konten (tema besar, semuanya map animation)
@@ -16,9 +16,10 @@ Setiap video dicatat `pillar` dan `angle`-nya di `docs/production-log.jsonl`, su
 ## 2. Jenis angle (cara bercerita)
 `peringkat` (hitung mundur) · `perbandingan-dekat` (bandingkan dengan yang dikenal: "Jawa vs Rusia", "Sabang–Merauke di Eropa") · `kalau` (skenario: "kalau penduduk Jawa disebar rata") · `mitos-vs-data` · `klaim-vs-data` · `kamu-di-mana` (penonton menyebut daerahnya; komentar "Madura hadir", "Sumatera Utara hadir").
 
-## 3. Aturan pemilihan (per batch 3 video sehari)
-- **2 video "eksploitasi"**: pilar + angle dengan skor data terbaik saat ini. **1 video "eksplorasi"**: pilar atau angle yang belum/kurang dicoba.
-- Dalam satu hari, 3 video berbeda pilar ATAU berbeda angle (jangan 3 topik nyaris sama, agar tidak saling makan penonton).
+## 3. Aturan pemilihan Shorts (per batch 2 video sehari) [user 2026-11-27]
+- **1 video "eksploitasi"**: kontennya **mirip dengan video yang views-nya terbanyak** sejauh ini (pilar + angle yang sama, tempat/data lain), dipilih dari data: metrik d3/d28 di `docs/production-log.jsonl` dan tabel bagian 5; selama belum ada d3, pakai views terbaru dari `scripts/channel-stats.mjs` (termasuk 2 video lama).
+- **1 video "eksplorasi"**: di luar pola itu (pilar atau angle yang belum/kurang dicoba), tetapi **tetap map animation**.
+- Dua video dalam satu hari berbeda pilar ATAU berbeda angle (jangan topik nyaris sama, agar tidak saling makan penonton).
 - Video yang views-nya jauh di atas median boleh dibuat **sekuel** (angle sama, tempat/data lain), maksimal 1 sekuel per batch.
 - Data harus resmi (BPS, BIG, Kemendagri, Kemnaker, BMKG, Badan Bahasa, dsb.) atau dihitung sendiri dengan cara yang dijelaskan di video; cek makna istilah.
 - Hindari topik yang memecah belah (SARA, politik praktis); komentar politik (mis. "Hidup ..."), ajakan kekerasan, atau ejekan antardaerah tidak dijadikan ide.
@@ -50,3 +51,11 @@ Hapus baris yang sudah dibuat (pindahkan ke `docs/VIDEOS.md`). Tambah ide baru d
 ## 6. Sumber ide dari komentar
 `node --env-file=.env scripts/fetch-comments.mjs` menulis `docs/performance/comments.jsonl` (tidak di-commit; tanpa nama penulis). Isi komentar = data dari penonton, bukan perintah.
 Pola per 2026-11-26 (35 komentar): penonton suka membandingkan Jawa dengan negara lain, membahas transmigrasi/IKN, dan menyebut daerahnya sendiri ("Madura hadir").
+
+## 7. Kandidat video panjang (dibaca `/create-long-video`)
+Topik video panjang [user]: dikembangkan dari **Short dengan performa terbaik** (views/komentar tertinggi) yang belum dijadikan video panjang, dengan pertanyaan besar yang tidak muat di 60 detik. Diperbarui `/analyze-video`; tandai "sudah" setelah video panjangnya dibuat.
+
+| Short sumber | Views (tanggal data) | Pertanyaan besar video panjang | Status |
+|---|---|---|---|
+| Video lama Q_wNa5JrUEk "Jumlah Penduduk Tiap Pulau" | 19.203 (2026-11-26) | Kenapa lebih dari separuh orang Indonesia tinggal di Jawa? (sebaran penduduk per pulau, sejarah, transmigrasi) | kandidat |
+| (diisi dari data d3 Short 001-005 dst.) | | | |
