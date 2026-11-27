@@ -29,7 +29,6 @@ Skor tambahan yang dipertimbangkan: apakah topik **dicari orang di YouTube/Googl
 
 | Ide | Pilar | Angle | Dekat | Kejut | Data | Komen | Momen | Total | Asal |
 |---|---|---|---|---|---|---|---|---|---|
-| Penduduk Pulau Jawa vs negara: lebih banyak dari Rusia dan Jepang (cek angka terbaru BPS + PBB) | indonesia-vs-dunia | perbandingan-dekat | 5 | 5 | 5 | 4 | 2 | 21 | komentar teratas (7 like) |
 | UMP 2027 tertinggi vs terendah (dihitung berapa bulan kerja) | ekonomi | perbandingan-dekat | 5 | 3 | 5 | 5 | 5 | 23 | momen penetapan UMP akhir tahun; menguji ulang H1 |
 | Kalau penduduk Jawa disebar rata ke semua pulau, Kalimantan jadi sepadat apa? | penduduk | kalau | 4 | 4 | 5 | 5 | 2 | 20 | komentar transmigrasi |
 | Provinsimu tumbuh paling cepat? Pertumbuhan penduduk per provinsi (BPS) | penduduk | kamu-di-mana | 5 | 3 | 5 | 5 | 2 | 20 | pola komentar "... hadir" |
@@ -39,7 +38,6 @@ Skor tambahan yang dipertimbangkan: apakah topik **dicari orang di YouTube/Googl
 | Provinsi dengan pulau terbanyak (Kemendagri/BIG) | wilayah | peringkat | 3 | 4 | 4 | 3 | 2 | 16 | usulan 2026-11-26 |
 | 718 bahasa daerah: provinsi dengan bahasa terbanyak (Badan Bahasa) | budaya-komunitas | peringkat | 4 | 5 | 4 | 5 | 2 | 20 | eksplorasi |
 | Luas laut vs darat Indonesia dibanding negara lain | indonesia-vs-dunia | perbandingan-dekat | 3 | 4 | 4 | 3 | 2 | 16 | eksplorasi |
-| Pemekaran provinsi: dari 8 provinsi (1945) sampai 38 sekarang di peta | sejarah | peringkat | 4 | 4 | 5 | 4 | 2 | 19 | eksplorasi pilar sejarah |
 
 Hapus baris yang sudah dibuat (pindahkan ke `docs/VIDEOS.md`). Tambah ide baru dari komentar (`docs/performance/comments.jsonl`), berita, dan hasil analisis.
 

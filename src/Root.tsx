@@ -5,8 +5,8 @@ import React from "react";
 // Video yang sudah dikemas ke D: dihapus beserta registrasinya (lihat .claude/commands/create-short-video.md dan create-long-video.md).
 // Contoh:
 //   import { Composition } from "remotion";
-//   <Composition id="005-slug" component={Video} durationInFrames={T.total} fps={T.fps} width={1080} height={1920} />
-//   <Composition id="005-thumbnail" component={Thumbnail} durationInFrames={T.total} fps={T.fps} width={1080} height={1920} />
+//   <Composition id="008-slug" component={Video} durationInFrames={T.total} fps={T.fps} width={1080} height={1920} />
+//   <Composition id="008-thumbnail" component={Thumbnail} durationInFrames={1} fps={30} width={1080} height={1920} />
 export const RemotionRoot: React.FC = () => {
   return <></>;
 };

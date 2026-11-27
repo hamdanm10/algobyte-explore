@@ -34,8 +34,12 @@ Satu blok singkat per video panjang (`L00N`, tayang Sabtu 19.00 WIB): Short sumb
 ## Catatan per batch Shorts (terbaru di atas)
 Shorts. Mulai video 006: satu blok singkat per batch harian (2 video: tanggal tayang, video + slot 18.45/19.45, kelompok, yang diuji). Blok per video di bawah = kelompok K0 (001-005).
 
+### Batch 2026-11-28: 006 (18.45, eksploitasi) + 007 (19.45, eksplorasi), kelompok K1
+- 006 Kalau Pulau Jawa Jadi Negara (31,1 dtk, penduduk/perbandingan-dekat, mirip video terlaris "penduduk tiap pulau"); 007 Dari 8 Jadi 38 Provinsi (31,6 dtk, pilar sejarah pertama, peringkat).
+- Diuji (K1): durasi pendek sekitar 31 dtk (target 33-37, tempo cepat membuatnya lebih pendek) vs K0 42-55 dtk. Yang dilihat: % rata-rata ditonton (harapan di atas K0, ada loop?), engagedPct, views d3 eksploitasi vs eksplorasi, komentar tebakan Sumatera (006) dan "provinsiku pecahan dari..." (007), sumber trafik pencarian (judul memakai frasa "penduduk pulau jawa", "pemekaran provinsi").
+
 ### 005 Sabang–Merauke di Eropa (42,5 dtk)
-- Status: dikemas ke D:, menunggu upload.
+- Status: tayang 2026-11-26 [TBPLxGGxUeo], 1.490 views di umur 0,7 hari (laju tercepat sejauh ini), belum dianalisis.
 - Hal yang diuji: topik wilayah/geografi (H1) dengan format **overlay skala/penggaris** antarbenua, bukan peringkat (H2 tidak dipakai, jadi pembanding); pembuka visual langsung (globe Eropa + penggaris berhenti di "?") dengan pertanyaan "sampai mana?"; **voice tempo cepat** (speed 1,15 + atempo 1,1, jeda antar segmen 0,12 dtk; preferensi user) dibanding 001-004 yang lebih lambat; durasi lebih pendek (42,5 dtk); penutup ajakan komentar "barat atau timur?"; gaya terang atlas + globe 3D berputar.
 - Yang dilihat nanti: Viewed vs Swiped Away dibanding 001-004 (apakah pembuka visual + tempo cepat menahan lebih banyak), % rata-rata ditonton (durasi pendek + tempo cepat: harapan di atas 80%, cek ada loop), titik jatuh retensi (saat globe pindah ke AS/Australia?), jumlah komentar dan isinya (kota asal/barat-timur), sumber trafik, subscriber didapat.
 

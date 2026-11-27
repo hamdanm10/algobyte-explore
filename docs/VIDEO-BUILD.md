@@ -80,6 +80,26 @@ Kertas biru keabuan `#e6edf0` bergrid halus, jendela peta 1000x900 di y 480 (sud
 - **Perbandingan jarak/ukuran yang jujur:** `src/shared/lib/sphere.ts` → `rigidMover(from, fromDir, to, toDir)` = rotasi kaku di bola (kuaternion, t 0..1) yang memindahkan garis/siluet tanpa mengubah panjang/bentuk; `arcFrom(a, b, km)` = titik lingkaran besar sepanjang km; `distKm` haversine. Label disembunyikan bila titik di balik globe (dot product dengan pusat kamera).
 - Label pin dekat tepi jendela terpotong: atur `anchor`/`dx`, dan geser pusat kamera bila ujung penggaris keluar jendela.
 
+## Mengambil data resmi (BPS, PBB) tanpa API key
+- **Tabel BPS** (`bps.go.id/id/statistics-table/2/<id>/...`) tidak lagi memuat angka di HTML biasa: ambil dengan header React Server Components, `curl -sL -A "Mozilla/5.0" -H "RSC: 1" "<url tabel>"`, lalu cari `"datacontent":{...}`. Kunci = kode wilayah (4 digit, `3200` Jabar, `9999` Indonesia) + kode var + kode turvar (`585` = jumlah) + kode tahun (`120` = 2020) + `0`. Nama wilayah ada di `"vervar":[...]`. Hanya tahun default tabel yang ikut; id tabel = base64 dari `"<var>#2"` (mis. var 2131 = hasil SP2020 per provinsi, `MjEzMSMy`; var 1886 = proyeksi per provinsi). Parameter tahun di URL tidak berpengaruh.
+- **PBB World Population Prospects 2024:** CSV resmi `https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz` (17 MB; filter `Variant=Medium`, `LocTypeName=Country/Area`, kolom `PopTotal` dalam ribu). API data portal butuh token (401).
+- Bandingkan angka di tahun yang SAMA (mis. Sensus 2020 vs PBB 2020) dan tulis "tanpa Indonesia" bila bagian Indonesia diperingkatkan dengan negara.
+
+## Gaya kertas krem + gelembung penduduk (video 006, peta dunia 2D Equal Earth)
+Krem `#f4eee3`, arang `#1f2a2e`, koral `#e4572e` (Jawa), teal `#2a9d8f` (negara lain); Archivo Black + IBM Plex Sans.
+- Peta dunia `geoEqualEarth().center([lon,lat]).scale(s).translate([MW/2,MH/2])` digambar ulang tiap frame (241 negara, 933 frame sekitar 1 menit render). Kamera = stop `{f, lon, lat, s}`, s logaritmik. s 178 = seluruh dunia di jendela 1000x580; s 2500-2900 = Pulau Jawa memenuhi jendela.
+- Pulau = gabungan poligon `idn-provinces.json` diproyeksikan dengan proyeksi dunia yang sama (Jawa = 6 provinsi, Sumatera = 10). Centroid negara besar (AS, Rusia) diganti titik manual agar gelembung tidak jatuh di laut/ujung.
+- Gelembung luas sebanding nilai: radius = k x sqrt(nilai). Panel duel di bawah peta (y 1100-1330) memakai k 9 (150 juta = radius 110). Ukuran teks di dalam gelembung diskalakan dengan radius (`min(46, r*0.42)`), kalau tidak meluber di gelembung kecil.
+- Papan peringkat menggantikan peta di jendela yang sama; baris muncul berurutan, baris yang disorot masuk terakhir.
+
+## Gaya arsip sepia + stempel (video 007, peta Indonesia 2D, kelompok per provinsi induk)
+Kertas `#efe3c8` + vignette radial, laut bergaris tipis, arsiran 45 derajat di atas daratan (`<pattern>`), tinta `#3a2a1a`, stempel merah `#b3261e` (`mixBlendMode: multiply`, border + outline ganda); Libre Caslon Text + Courier Prime.
+- Mewarnai 33 poligon lama per **induk 1945** (map nama provinsi -> kelompok) dengan `stroke` = warna isi, sehingga batas antar provinsi hilang; batas sekarang muncul sebagai lapisan garis terpisah dengan `strokeOpacity` dianimasikan.
+- Provinsi yang tidak punya poligon di data lama (Kaltara, 4 provinsi baru Papua) ditampilkan sebagai titik + label dari `projectLonLat`.
+- Kamera peta Indonesia penuh: `s = MW / MAP_W * 0.96` (jangan `min` lebar/tinggi: jendela 1000x580 dibatasi lebar). Zoom per wilayah: kotak poligon + titik label, `pad` 0,62.
+- Label muncul bertahap: jeda per label `min(7, 36 / jumlah)` frame agar semua tampil sebelum kamera pindah.
+- Thumbnail memakai komponen peta video pada frame tertentu: bungkus dengan `<Sequence from={-frame} layout="none">`.
+
 ## Video panjang (16:9, `/create-long-video`)
 - **Nama:** folder `src/videos/long-NNN-slug/` dan `out/long-NNN-slug/`; komposisi `long-NNN-slug` (1920x1080, 30 fps) dan `long-NNN-thumbnail` (1280x720, durasi 1 frame cukup). Awalan `long-` wajib: `package-video.mjs` memakai awalan ini untuk mengemas ke `videos\long\`.
 - **Voice:** file dari AI Studio di `voice-raw/<id>.wav` (milik user, jangan diubah) diproses `scripts/import-voice.mjs` menjadi `voice/<id>.wav` + `voice.json` (format sama dengan `gen-voice.mjs`). `voice-script.json` memuat `"format": "long"` dan `"timeline": { "gapSeconds": 0.6, "voiceLead": 1 }`; teruskan nilai yang sama ke `buildTimeline` agar `.srt` dan chapters sinkron.
