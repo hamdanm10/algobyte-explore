@@ -60,7 +60,7 @@ Topik/pilar boleh berbeda di dalam kelompok (dicatat di log), tetapi variabel ya
 | Kelompok | Video | Yang diuji | Pembanding | Metrik utama | Status |
 |---|---|---|---|---|---|
 | K0 | 001-005 | campuran (variabel bercampur; tempo cepat mulai 005) | - | baseline | menunggu data d3 |
-| K1 | 006-013 (mulai 2026-11-28) | durasi pendek: target 33-37 dtk (80-85 kata, 5 segmen), hasil sejauh ini sekitar 31 dtk karena tempo cepat; vs 42-55 dtk | K0 | % rata-rata ditonton, engagedPct | berjalan (006, 007) |
+| K1 | 006-013 (mulai 2026-11-27) | durasi pendek: target 33-37 dtk (80-85 kata, 5 segmen), hasil sejauh ini sekitar 31 dtk karena tempo cepat; vs 42-55 dtk | K0 | % rata-rata ditonton, engagedPct | berjalan (006, 007) |
 Ide berikutnya: durasi 35 dtk vs 42 dtk; tema gelap vs terang; judul pertanyaan vs judul angka; slot jam (otomatis terukur dari `uploadSlot`).
 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
