@@ -56,5 +56,5 @@ Topik video panjang [user]: dikembangkan dari **Short dengan performa terbaik** 
 
 | Short sumber | Views (tanggal data) | Pertanyaan besar video panjang | Status |
 |---|---|---|---|
-| Video lama Q_wNa5JrUEk "Jumlah Penduduk Tiap Pulau" | 19.203 (2026-11-26) | Kenapa lebih dari separuh orang Indonesia tinggal di Jawa? (sebaran penduduk per pulau, sejarah, transmigrasi) | **sudah: L001** (tayang 2026-12-05) |
+| Video lama Q_wNa5JrUEk "Jumlah Penduduk Tiap Pulau" | 19.203 (2026-11-26) | Kenapa lebih dari separuh orang Indonesia tinggal di Jawa? (sebaran penduduk per pulau, sejarah, transmigrasi) | **sudah: L001** (tayang 2026-11-28) |
 | (diisi dari data d3 Short 001-005 dst.) | | | |

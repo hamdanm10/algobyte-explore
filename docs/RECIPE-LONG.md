@@ -43,7 +43,7 @@ Satu video per minggu, jadi satu kelompok = **1 variabel untuk 3-4 video panjang
 
 | Kelompok | Video | Yang diuji | Pembanding | Metrik utama | Status |
 |---|---|---|---|---|---|
-| LK0 | L001-L003 | baseline (resep di atas) | - | baseline | berjalan: L001 (2026-12-05) |
+| LK0 | L001-L003 | baseline (resep di atas) | - | baseline | berjalan: L001 (2026-11-28) |
 Ide berikutnya: durasi 6 vs 10 menit; hook dengan cuplikan hasil akhir vs pertanyaan saja; satu voice AI Studio vs voice lain.
 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
