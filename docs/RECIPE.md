@@ -30,7 +30,7 @@ Label asal tiap pengaturan:
 | Tema terang/gelap | terang | [hipotesis] (002, 005) | 005 |
 | Jenis peta | bebas, tidak boleh sama dengan video sebelumnya (2D datar, 3D miring, globe) | belum diuji | - |
 | Caption | per kata, tengah bawah (y sekitar 1400), putih stroke gelap, sorot kuning | [hipotesis] (002-005) | 002 |
-| Musik | `calm-explainer-01`, volume katalog (sekitar 0,10) | [hipotesis] | 002 |
+| Musik | `calm-explainer-01`, **volume 0,20** (tulis `volume={0.2}` di `<Music>`; volume katalog 0,10 terlalu pelan, hampir tidak terdengar di HP). Voice tetap harus jelas di atas musik: cek dengar di HP/speaker kecil | **[user]** 2026-11-27 | 008 |
 | SFX | 8-14 cue: whoosh tiap pindah kamera, pop untuk label, impact di klimaks, sting di penutup | [hipotesis] | 005 |
 | Judul | pertanyaan/klaim + angka atau tempat yang dikenal, maks sekitar 60 karakter | [hipotesis] | 005 |
 | Jadwal upload | **2 video/hari, 18.45 dan 19.45 WIB** (dijadwalkan di YouTube Studio; tanggal+jam ditulis di `metadata.md`); slot dicatat di log (`uploadSlot`) | **[user]** 2026-11-27; Claude boleh mengusulkan jam lain dari data, user yang memutuskan | - |
@@ -68,6 +68,7 @@ Metrik utama Shorts: **pembuka** = Viewed vs Swiped Away bila user menempelnya, 
 - Bandingkan di umur yang sama (d3 dengan d3, d28 dengan d28). Video dalam satu hari saling berebut penonton: bandingkan per kelompok, bukan video satu lawan satu.
 
 ## 6. Riwayat perubahan resep (terbaru di atas)
+- 2026-11-27: volume musik Shorts naik dari 0,10 ke 0,20 [user]: musik 006-007 hampir tidak terdengar di HP.
 - 2026-11-27: Shorts jadi 2 video/hari (18.45, 19.45 WIB; slot 20.45 dihapus) karena mulai ada 1 video panjang per minggu (`docs/RECIPE-LONG.md`) [user]; batch = 1 eksploitasi + 1 eksplorasi; kelompok eksperimen 6-8 video; ekspor ke `videos\short\`.
 - 2026-11-26: jadwal 3 video/hari (18.45, 19.45, 20.45 WIB) dan ekspor .srt [user]; eksperimen dinilai per kelompok mingguan; gaya visual boleh mengikuti gaya referensi dari data, kulit wajib beda dari 10 video terakhir; aturan "jeda 2-3 hari" dihapus.
 - 2026-11-26 (005): tempo dipercepat dan jeda dipangkas atas permintaan user; resep pertama ditulis dari catatan 001-005.

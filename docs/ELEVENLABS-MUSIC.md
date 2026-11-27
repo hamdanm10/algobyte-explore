@@ -15,7 +15,7 @@ Sumber: https://elevenlabs.io/docs/overview/capabilities/music , https://elevenl
 ## Prompt untuk musik di bawah voiceover
 Jawab lima hal: genre, mood, instrumen, tempo (BPM), era produksi. Tambah "instrumental only", "sits quietly under a voiceover", "steady energy with no sudden changes".
 Loop: sebut jumlah bar, BPM, key. Kosong/jeda harus disebut eksplisit (kalau tidak model mengisinya). Kosakata produksi (sidechained, plate reverb, tape saturation) mengubah mixing.
-Dokumentasi tidak memberi rekomendasi level di bawah voice: kami pakai volume sekitar 0,10 (uji dengar).
+Dokumentasi tidak memberi rekomendasi level di bawah voice. Volume 0,10 ternyata hampir tidak terdengar di HP (masukan user 2026-11-27); Shorts sekarang memakai 0,20 (`docs/RECIPE.md`).
 
 ## Lisensi (PENTING untuk monetisasi)
 - Plan berbayar memuat lisensi komersial (selama bukan layanan Beta). Plan Free: tidak ada lisensi komersial dan wajib atribusi "Eleven Music".

@@ -25,7 +25,7 @@ Titik "angka disebut" / "fakta disebut" diambil dari `voice.json` (`pauses`: `[m
 3. Voice: `<Sequence from={T.segStart[id] + T.voiceLead} layout="none"><Audio src={wav} /></Sequence>` (`Audio` dari `@remotion/media`).
 4. Caption: `<Captions captions={captions[id]} startFrame={T.voiceLead} .../>` DI DALAM Sequence segmen yang sama. Kotak caption harus tidak menimpa teks lain (atur `style.top/left`, `fontSize`).
 5. SFX: `<Sfx id="whoosh-camera" from={frame} />` (id dari `sfx-index.json`; volume dari katalog).
-6. Musik: `<Music id="calm-explainer-01" />` (volume katalog sekitar 0,10; fade in/out otomatis; loop).
+6. Musik: `<Music id="calm-explainer-01" volume={0.2} />` (Shorts: volume 0,20 sesuai resep [user]; volume katalog 0,10 terlalu pelan di HP; fade in/out otomatis; loop). Video panjang: lihat `docs/RECIPE-LONG.md`.
 7. **Watermark (wajib, elemen TERAKHIR = paling atas):** `<Watermark />` (opacity 0,4, kiri atas x 44 y 130, lebar 300, fade in 0,6 dtk). Area kiri atas (x di bawah 400, y 120-200) dicadangkan: letakkan judul di bawah y 210 atau geser ke kanan. Latar terang: `tone="dark"` (logo dibalik jadi hitam). Aset: `public/brand/watermark.png` (684x103, putih transparan; asli di `D:\Hamdan\Contents\algobyte-explore\assets\images\`, di sana juga ada `logo.png` dan `banner.png`).
    Thumbnail tidak memakai watermark kecuali diminta.
 
