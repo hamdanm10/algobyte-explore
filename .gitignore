@@ -13,3 +13,6 @@ out
 # Public viewer comments (local idea source, not published)
 docs/performance/comments.jsonl
 docs/performance/analytics-latest.json
+
+# Local YouTube data database (backed up to D: by scripts/yt-sync.mjs --backup)
+data/

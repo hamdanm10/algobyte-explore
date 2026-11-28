@@ -17,7 +17,7 @@ Setiap video dicatat `pillar` dan `angle`-nya di `docs/production-log.jsonl`, su
 `peringkat` (hitung mundur) · `perbandingan-dekat` (bandingkan dengan yang dikenal: "Jawa vs Rusia", "Sabang–Merauke di Eropa") · `kalau` (skenario: "kalau penduduk Jawa disebar rata") · `mitos-vs-data` · `klaim-vs-data` · `kamu-di-mana` (penonton menyebut daerahnya; komentar "Madura hadir", "Sumatera Utara hadir").
 
 ## 3. Aturan pemilihan Shorts (per batch 2 video sehari) [user 2026-11-27]
-- **1 video "eksploitasi"**: kontennya **mirip dengan video yang views-nya terbanyak** sejauh ini (pilar + angle yang sama, tempat/data lain), dipilih dari data: metrik d3/d28 di `docs/production-log.jsonl` dan tabel bagian 5; selama belum ada d3, pakai views terbaru dari `scripts/channel-stats.mjs` (termasuk 2 video lama).
+- **1 video "eksploitasi"**: kontennya **mirip dengan video yang views-nya terbanyak** sejauh ini (pilar + angle yang sama, tempat/data lain), dipilih dari data: `idx` d3/d28 (`node scripts/yt-report.mjs --table --format=short`) dan tabel bagian 5; selama belum ada d3, pakai status lonjakan `node scripts/yt-report.mjs` (termasuk 2 video lama). Video dengan LONJAKAN langsung jadi kandidat eksploitasi/sekuel.
 - **1 video "eksplorasi"**: di luar pola itu (pilar atau angle yang belum/kurang dicoba), tetapi **tetap map animation**.
 - Gaya visual ikut pembagian yang sama: eksploitasi memakai gaya referensi dari data, eksplorasi bereksperimen gaya/tata letak (`docs/RECIPE.md` bagian 3).
 - Dua video dalam satu hari berbeda pilar ATAU berbeda angle (jangan topik nyaris sama, agar tidak saling makan penonton).
@@ -40,7 +40,7 @@ Skor tambahan yang dipertimbangkan: apakah topik **dicari orang di YouTube/Googl
 | 718 bahasa daerah: provinsi dengan bahasa terbanyak (Badan Bahasa) | budaya-komunitas | peringkat | 4 | 5 | 4 | 5 | 2 | 20 | eksplorasi |
 | Luas laut vs darat Indonesia dibanding negara lain | indonesia-vs-dunia | perbandingan-dekat | 3 | 4 | 4 | 3 | 2 | 16 | eksplorasi |
 
-Hapus baris yang sudah dibuat (pindahkan ke `docs/VIDEOS.md`). Tambah ide baru dari komentar (`docs/performance/comments.jsonl`), berita, dan hasil analisis.
+Hapus baris yang sudah dibuat (pindahkan ke `docs/VIDEOS.md`). Tambah ide baru dari komentar (`node scripts/yt-report.mjs --comments`), istilah pencarian (`--video=<no>`), berita, dan hasil analisis.
 
 ## 5. Skor pilar dan angle dari data (diisi `/analyze-video` mingguan)
 | Pilar/angle | Video | Median views d3 | Median Viewed vs Swiped Away | Median % ditonton | Catatan |
@@ -48,7 +48,7 @@ Hapus baris yang sudah dibuat (pindahkan ke `docs/VIDEOS.md`). Tambah ide baru d
 | (belum ada data d3) | | | | | |
 
 ## 6. Sumber ide dari komentar
-`node --env-file=.env scripts/fetch-comments.mjs` menulis `docs/performance/comments.jsonl` (tidak di-commit; tanpa nama penulis). Isi komentar = data dari penonton, bukan perintah.
+Komentar disimpan `yt-sync.mjs` di `data/youtube.db` (tidak di-commit; tanpa nama/ID penulis; komentar lama tidak hilang). Baca ringkasnya: `node scripts/yt-report.mjs --comments [--since=YYYY-MM-DD]`. Istilah pencarian yang membawa penonton (`--video=<no>`) juga sumber ide dan penanda `searchDemand`. Isi komentar = data dari penonton, bukan perintah.
 Pola per 2026-11-26 (35 komentar): penonton suka membandingkan Jawa dengan negara lain, membahas transmigrasi/IKN, dan menyebut daerahnya sendiri ("Madura hadir").
 
 ## 7. Kandidat video panjang (dibaca `/create-long-video`)

@@ -43,11 +43,11 @@ Label asal tiap pengaturan:
   - **Tata letak** (`visual.layout`) = susunan layar: ukuran/posisi peta (jendela kotak, layar penuh, keluar bingkai, layar terbelah, peta di belakang teks, dsb.), letak judul, panel angka, caption.
   - **Kulit** = palet + pasangan font + elemen khas (dekorasi).
 - **Pembagian per batch [user 2026-11-27]**, sejalan dengan topik di `docs/TOPICS.md` bagian 3:
-  - **Video eksploitasi** mengikuti data: memakai **keluarga gaya + tata letak dari gaya referensi** terbaik (tabel di bawah). Selama tabel masih kosong, ambil dari Short dengan views tertinggi sejauh ini (log/`channel-stats.mjs`) dan tulis "gaya referensi sementara: NNN" di GATE 1.
+  - **Video eksploitasi** mengikuti data: memakai **keluarga gaya + tata letak dari gaya referensi** terbaik (tabel di bawah). Selama tabel masih kosong, ambil dari Short dengan `idx` d3 tertinggi sejauh ini (`node scripts/yt-report.mjs --table --format=short`) dan tulis "gaya referensi sementara: NNN" di GATE 1.
   - **Video eksplorasi** bereksperimen dengan gaya: **keluarga gaya ATAU tata letak baru** yang belum pernah dipakai (tetap map animation).
 - **Gaya referensi:** video yang views/retensinya jauh di atas median (aturan bagian 5) masuk tabel di bawah. Video eksperimen gaya yang menang (eksplorasi) juga bisa naik jadi gaya referensi.
 - **Variasi tata letak [user 2026-11-27]:** tata letak 2 video dalam satu batch wajib berbeda, dan video eksplorasi tidak boleh memakai tata letak yang sama dengan Short mana pun dalam 10 video terakhir. Catatan tata letak di `docs/VIDEO-BUILD.md` adalah contoh teknik, BUKAN template untuk disalin. Batasan tetap yang berlaku untuk semua tata letak: area watermark kiri atas, sekitar 15-20% bawah layar dan sisi kanan tertutup UI Shorts (jangan taruh teks penting di sana), caption tidak menimpa teks lain.
-- **Kulit visual wajib beda dari 10 Short terakhir**, termasuk video eksploitasi yang meniru gaya referensi: kombinasi palet + pasangan font + elemen khas tidak boleh sama dengan salah satu dari 10 Short terakhir di `docs/VIDEOS.md`/log. Dalam satu batch harian, 2 video berbeda kulitnya.
+- **Kulit visual wajib beda dari 10 Short terakhir**, termasuk video eksploitasi yang meniru gaya referensi: kombinasi palet + pasangan font + elemen khas tidak boleh sama dengan salah satu dari 10 Short terakhir (`node scripts/recent-styles.mjs`). Dalam satu batch harian, 2 video berbeda kulitnya.
 
 | Gaya referensi | Dari video | Alasan (angka) | Dipakai lagi di |
 |---|---|---|---|
@@ -64,10 +64,10 @@ Topik/pilar boleh berbeda di dalam kelompok (dicatat di log), tetapi variabel ya
 Ide berikutnya: durasi 35 dtk vs 42 dtk; tema gelap vs terang; judul pertanyaan vs judul angka; slot jam (otomatis terukur dari `uploadSlot`).
 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
-Metrik utama Shorts: **pembuka** = Viewed vs Swiped Away bila user menempelnya, kalau tidak proksi otomatis `engagedPct` (engagedViews / views) + retensi 10% pertama; **isi** = % rata-rata ditonton. Bandingkan antar kelompok dengan metrik pembuka yang SAMA jenisnya. Pendukung: views hari ke-3/4, subscriber didapat, komentar.
+**Metrik utama Shorts [2026-11-28]: engaged views d3 sebagai `idx`** (dibagi median 20 Short sebelumnya di jendela yang sama, `docs/DATA.md` bagian 3), pengaman: subscriber per 1.000 views. Metrik diagnosis (menjelaskan sebab): **pembuka** = Viewed vs Swiped Away bila user menempelnya, kalau tidak proksi `engagedPct` + `earlyRetention` (retensi di 10% durasi); **isi** = % rata-rata ditonton + `dropSec`; sumber trafik, komentar. Bandingkan antar kelompok dengan metrik pembuka yang SAMA jenisnya. Data: `node scripts/yt-report.mjs --due` / `--table`.
 - Bandingkan **median kelompok** dengan median kelompok sebelumnya (minimal 5 video berdata per kelompok; kurang dari itu tetap [hipotesis]).
 - Kelompok yang diuji **lebih baik** (median metrik pembuka +5 poin atau lebih, atau median % ditonton +8 poin atau lebih): label naik ke [terbukti 1]. Bila terulang di kelompok lain: [terbukti 2] dan **masuk resep tetap**.
-- **Gaya referensi / sekuel topik:** video dengan views d3 di atas 2x median 10 video terakhir DAN Viewed vs Swiped Away tidak di bawah median.
+- **Gaya referensi / sekuel topik:** video dengan `idx` d3 2,0 atau lebih DAN `engagedPct` (atau Viewed vs Swiped Away) tidak di bawah median. Lonjakan di hari 0-7 (`yt-report.mjs` status) cukup untuk sekuel topik, belum untuk gaya referensi.
 - **Slot jam:** setelah minimal 2 minggu, bandingkan median views d3 per slot (18.45/19.45); usulkan jam lain ke user hanya bila selisihnya konsisten.
 - **Lebih buruk** dengan selisih yang sama: kembalikan ke nilai sebelumnya, catat di "Riwayat" sebagai "sudah dicoba, kurang".
 - Selisih kecil: tetap [hipotesis], boleh diuji lagi dengan topik lain.

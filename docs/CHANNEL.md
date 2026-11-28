@@ -21,11 +21,11 @@ Pola: data Indonesia yang relatable divisualkan di peta. Deskripsi video lama mi
 Kira-kira 500 subscriber + 3 upload publik dalam 90 hari + 3 juta views Shorts atau 3.000 jam tonton dalam 90 hari untuk tahap awal. Konsistensi upload adalah masalah terbesar saat ini.
 
 ## Cara mengambil data channel lagi
-**Cara utama (tanpa Python):** `node --env-file=.env scripts/channel-stats.mjs` (tabel video, views per hari, perubahan sejak snapshot terakhir; snapshot disimpan di `docs/performance/snapshots.jsonl`). Dipakai oleh `/analyze-video`.
+**Cara utama (tanpa Python):** `node --env-file=.env scripts/yt-sync.mjs` (sinkron publik + Analytics privat ke `data/youtube.db`), lalu `node scripts/yt-report.mjs` (status, `--table`, `--video=<no>`, `--comments`). Detail: `docs/DATA.md`. Dipakai otomatis di tahap 0 kedua command dan oleh `/analyze-video`.
 Cara lama lewat skrip Python skill `youtube` (butuh venv, hanya bila perlu fitur skill yang tidak ada di skrip di atas):
 Butuh `YOUTUBE_API_KEY` di `.env` (sudah ada) dan paket Python `google-api-python-client` di venv:
 ```
 python3 -m venv /tmp/yt-venv && /tmp/yt-venv/bin/pip install -q google-api-python-client google-auth-oauthlib
 bash -c 'set -a; source .env; set +a; cd ~/.claude/skills/youtube && /tmp/yt-venv/bin/python execution/fetch_channel_data.py @algobyte.explore --videos 10'
 ```
-Biaya kuota kecil (sekitar 4 dari 10.000 unit per hari). Analytics privat (retention, CTR) butuh OAuth, belum disiapkan; salin manual dari YouTube Studio bila perlu.
+Biaya kuota kecil (sekitar 4 dari 10.000 unit per hari). Analytics privat (retensi, sumber trafik, engaged views, istilah pencarian) sudah otomatis lewat OAuth read-only (`scripts/yt-oauth.mjs`). Yang tetap manual dari YouTube Studio: Viewed vs Swiped Away dan CTR impresi thumbnail (`scripts/yt-manual.mjs`).
