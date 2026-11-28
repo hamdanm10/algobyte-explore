@@ -101,6 +101,24 @@ Kertas `#efe3c8` + vignette radial, laut bergaris tipis, arsiran 45 derajat di a
 - Label muncul bertahap: jeda per label `min(7, 36 / jumlah)` frame agar semua tampil sebelum kamera pindah.
 - Thumbnail memakai komponen peta video pada frame tertentu: bungkus dengan `<Sequence from={-frame} layout="none">`.
 
+## Alat bersama sejak 008-009
+- `src/shared/lib/camera.ts`: `cameraAt(frame, stops)` (x,y linear, s logaritmik, ease inOut), `camTransform(cam, layarX, layarY)`, `fitBox(box, W, H, pad)`, `unionBox`. Dipakai ulang, jangan menulis interpolasi kamera sendiri.
+- `src/shared/lib/cue.ts`: `cueFrame(captions, seg, "frasa")` = frame saat frasa diucapkan (dari `captions.json`; angka ditulis seperti caption, mis. "61juta" untuk "6,1 juta"). Di `data.ts`: `cue = (seg, frasa) => T.segStart[seg] + cueFrame(...)`. Frasa yang tidak ketemu melempar error.
+- Thumbnail dari komponen peta video: ekspor komponennya dan bungkus `<Sequence from={-frame} layout="none">`.
+- `scripts/tighten-voice.mjs`: merapatkan voice ElevenLabs ke 2,65 kata/dtk tanpa kredit (008: atempo 1,14; 009: 1,21).
+
+## Gaya akta kelahiran + lilin umur (video 008, peta Indonesia 2D, tata letak gaya referensi 007)
+Mint pucat `#e6f2ec` + konfeti tipis, ungu tua `#5b2a86`/`#2e1a47`, kuning lilin `#f4b400`; Young Serif + Outfit. Jendela peta 1000x600 di y 400, panel kartu y 1040-1340, caption y 1395.
+- Provinsi tanpa poligon lama: Kaltara = poligon Kaltim dipotong `clipPath` di atas lintang 2,1 (perkiraan batas); 4 provinsi baru Papua = titik di ibu kota + label ukuran tetap layar.
+- Hook: 12 provinsi muda menyala berurutan menurut tahun, penghitung angka besar di panel. Kartu "AKTA KELAHIRAN · NO. n" + lilin angka umur (api radial-gradient berkedip dengan sin).
+- Provinsi induk: garis putus-putus kuning lilin.
+
+## Gaya slip gaji + peta choropleth layar penuh (video 009, tata letak baru)
+Peta Indonesia TANPA bingkai mengisi layar (laut bergaris diagonal), titik fokus kamera (540, 770); slip kertas miring -1,5 derajat di y 1010 dengan tepi bawah sobek (`clip-path` polygon: titik zigzag ditulis dari KANAN ke kiri setelah `100% 0`, kalau tidak potongannya diagonal). Hijau uang `#1f7a4d`, merah `#d7263d`, kertas `#fbfaf4`; Bebas Neue + JetBrains Mono, baris struk "label ..... nilai" (border dotted flex).
+- Choropleth: kuning pucat ke hijau (2,6-4,7 juta), di atas 5 juta hijau tua; provinsi tanpa data = arsir abu (`<pattern>`), disebut di kartu sumber.
+- Pin label melayang (kotak warna + garis ke titik provinsi) dihitung di koordinat layar dari kamera.
+- Isi slip berganti per segmen (angka berputar, batang 3 bulan terisi 2,36, daftar 5 terendah + lencana JAWA, catatan UMP vs UMK).
+
 ## Video panjang (16:9, `/create-long-video`)
 - **Nama:** folder `src/videos/long-NNN-slug/` dan `out/long-NNN-slug/`; komposisi `long-NNN-slug` (1920x1080, 30 fps) dan `long-NNN-thumbnail` (1280x720, durasi 1 frame cukup). Awalan `long-` wajib: `package-video.mjs` memakai awalan ini untuk mengemas ke `videos\long\`.
 - **Voice:** file dari AI Studio di `voice-raw/<id>.wav` (milik user, jangan diubah) diproses `scripts/import-voice.mjs` menjadi `voice/<id>.wav` + `voice.json` (format sama dengan `gen-voice.mjs`). `voice-script.json` memuat `"format": "long"` dan `"timeline": { "gapSeconds": 0.6, "voiceLead": 1 }`; teruskan nilai yang sama ke `buildTimeline` agar `.srt` dan chapters sinkron.

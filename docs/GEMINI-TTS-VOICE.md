@@ -14,6 +14,7 @@ User menilai voice video sebelumnya **terlalu banyak jeda**. Mulai video 005 tem
 - ElevenLabs: `voiceSettings.speed` **1,15-1,2** (1,0 terlalu lambat). Gemini: `style` "speaking rapidly" (uji dulu).
 - **Jeda antar segmen dipersingkat:** `buildTimeline(voice, ORDER, { gapSeconds: 0.12, voiceLead: 1 })` (default lama 0,45 dtk + 3 frame terasa seperti jeda tiap segmen). Segmen lebih sedikit dan lebih panjang (4-6 segmen), jangan satu segmen per kalimat pendek.
 - Hindari elipsis ("...") dan koma berlebihan di naskah, karena TTS menjadikannya jeda panjang. Pakai satu titik/koma saja.
+- Merapatkan tanpa kredit: `node scripts/tighten-voice.mjs <folder> [--target=2.65]` (jeda dalam segmen dipotong ke 0,25 dtk, lalu satu faktor `atempo` untuk semua segmen; 008: 1,14, 009: 1,21), lalu `gen-voice.mjs <folder> --measure-only`.
 - `voice-qa.mjs`: anggap hening di dalam segmen di atas 0,4 dtk sebagai masalah; bila ada, rapatkan naskah atau naikkan `speed`.
 
 ## 1. Model

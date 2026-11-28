@@ -33,7 +33,7 @@ Label asal tiap pengaturan:
 | Musik | `calm-explainer-01`, **volume 0,20** (tulis `volume={0.2}` di `<Music>`; volume katalog 0,10 terlalu pelan, hampir tidak terdengar di HP). Voice tetap harus jelas di atas musik: cek dengar di HP/speaker kecil | **[user]** 2026-11-27 | 008 |
 | SFX | 8-14 cue: whoosh tiap pindah kamera, pop untuk label, impact di klimaks, sting di penutup | [hipotesis] | 005 |
 | Judul | pertanyaan/klaim + angka atau tempat yang dikenal, maks sekitar 60 karakter | [hipotesis] | 005 |
-| Jadwal upload | **2 video/hari, 18.45 dan 19.45 WIB** (dijadwalkan di YouTube Studio; tanggal+jam ditulis di `metadata.md`); slot dicatat di log (`uploadSlot`) | **[user]** 2026-11-27; Claude boleh mengusulkan jam lain dari data, user yang memutuskan | - |
+| Jadwal upload | **2 video/hari, 18.45 dan 19.45 WIB, tayang HARI ITU JUGA** (batch dibuat dan tayang di hari `/create-short-video` dijalankan, user 2026-11-28) (dijadwalkan di YouTube Studio; tanggal+jam ditulis di `metadata.md`); slot dicatat di log (`uploadSlot`) | **[user]** 2026-11-27; Claude boleh mengusulkan jam lain dari data, user yang memutuskan | - |
 | Ekspor | `.mp4`, `.srt` (bahasa Indonesia), `thumbnail.png`, `metadata.md` ke `D:\Hamdan\Contents\algobyte-explore\videos\short\NNN-nama\` | **[user]** 2026-11-27 | - |
 
 ## 3. Gaya visual: referensi dari data + variasi
@@ -60,7 +60,7 @@ Topik/pilar boleh berbeda di dalam kelompok (dicatat di log), tetapi variabel ya
 | Kelompok | Video | Yang diuji | Pembanding | Metrik utama | Status |
 |---|---|---|---|---|---|
 | K0 | 001-005 | campuran (variabel bercampur; tempo cepat mulai 005) | - | baseline | menunggu data d3 |
-| K1 | 006-013 (mulai 2026-11-27) | durasi pendek: target 33-37 dtk (80-85 kata, 5 segmen), hasil sejauh ini sekitar 31 dtk karena tempo cepat; vs 42-55 dtk | K0 | % rata-rata ditonton, engagedPct | berjalan (006, 007) |
+| K1 | 006-013 (mulai 2026-11-27) | durasi pendek: target 33-37 dtk (80-85 kata, 5 segmen), hasil sejauh ini sekitar 31 dtk karena tempo cepat; vs 42-55 dtk | K0 | % rata-rata ditonton, engagedPct | berjalan (006-009) |
 Ide berikutnya: durasi 35 dtk vs 42 dtk; tema gelap vs terang; judul pertanyaan vs judul angka; slot jam (otomatis terukur dari `uploadSlot`).
 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
@@ -75,6 +75,7 @@ Ide berikutnya: durasi 35 dtk vs 42 dtk; tema gelap vs terang; judul pertanyaan 
 - Bandingkan di umur yang sama (d3 dengan d3, d28 dengan d28). Video dalam satu hari saling berebut penonton: bandingkan per kelompok, bukan video satu lawan satu.
 
 ## 6. Riwayat perubahan resep (terbaru di atas)
+- 2026-11-28: batch Short tayang di hari command dijalankan, bukan besok [user]; video panjang dibuat Jumat, tayang Sabtu [user]. Voice dirapatkan dengan `scripts/tighten-voice.mjs` (gratis).
 - 2026-11-27: gaya dibagi 3 lapis (keluarga, tata letak, kulit) [user]; video eksploitasi mengikuti gaya referensi dari data, video eksplorasi bereksperimen gaya/tata letak; tata letak wajib bervariasi (006-007 dan sebelumnya hampir sama: peta di jendela kotak di tengah).
 - 2026-11-27: volume musik Shorts naik dari 0,10 ke 0,20 [user]: musik 006-007 hampir tidak terdengar di HP.
 - 2026-11-27: Shorts jadi 2 video/hari (18.45, 19.45 WIB; slot 20.45 dihapus) karena mulai ada 1 video panjang per minggu (`docs/RECIPE-LONG.md`) [user]; batch = 1 eksploitasi + 1 eksplorasi; kelompok eksperimen 6-8 video; ekspor ke `videos\short\`.

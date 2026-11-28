@@ -38,6 +38,10 @@ Satu blok singkat per video panjang (`L00N`, tayang Sabtu 19.00 WIB): Short sumb
 ## Catatan per batch Shorts (terbaru di atas)
 Shorts. Mulai video 006: satu blok singkat per batch harian (2 video: tanggal tayang, video + slot 18.45/19.45, kelompok, yang diuji). Blok per video di bawah = kelompok K0 (001-005).
 
+### Batch 2026-11-28: 009 (18.45, eksplorasi) + 008 (19.45, eksploitasi), kelompok K1
+- 009 UMP 2027 Jakarta vs NTT (34,6 dtk, pilar ekonomi, perbandingan-dekat, momen penetapan UMP; menguji ulang H1 "ekonomi kalah laku"; tata letak baru peta layar penuh + slip gaji); 008 Provinsi Termuda (33,2 dtk, sekuel lonjakan 007: sejarah/peringkat, gaya referensi sementara 007, frasa pencarian "provinsi termuda di indonesia").
+- Diuji (K1): durasi pendek sekitar 33-35 dtk vs K0 42-55 dtk. Yang dilihat: apakah sekuel 008 mengulang lonjakan 007; apakah ekonomi + momen (009) menyaingi pilar penduduk/sejarah; pencarian "ump 2027"; komentar "provinsiku lahir..." dan "UMP provinsiku naik...". Slot dirotasi dari 2026-11-27 (eksplorasi di 18.45). Tayang di hari yang sama dengan L001 (19.00).
+
 ### Batch 2026-11-27: 006 (18.45, eksploitasi) + 007 (19.45, eksplorasi), kelompok K1 (dimajukan user dari 2026-11-28)
 - 006 Kalau Pulau Jawa Jadi Negara (31,1 dtk, penduduk/perbandingan-dekat, mirip video terlaris "penduduk tiap pulau"); 007 Dari 8 Jadi 38 Provinsi (31,6 dtk, pilar sejarah pertama, peringkat).
 - Diuji (K1): durasi pendek sekitar 31 dtk (target 33-37, tempo cepat membuatnya lebih pendek) vs K0 42-55 dtk. Yang dilihat: % rata-rata ditonton (harapan di atas K0, ada loop?), engagedPct, views d3 eksploitasi vs eksplorasi, komentar tebakan Sumatera (006) dan "provinsiku pecahan dari..." (007), sumber trafik pencarian (judul memakai frasa "penduduk pulau jawa", "pemekaran provinsi").

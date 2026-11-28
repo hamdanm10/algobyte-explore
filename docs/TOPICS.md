@@ -30,7 +30,6 @@ Skor tambahan yang dipertimbangkan: apakah topik **dicari orang di YouTube/Googl
 
 | Ide | Pilar | Angle | Dekat | Kejut | Data | Komen | Momen | Total | Asal |
 |---|---|---|---|---|---|---|---|---|---|
-| UMP 2027 tertinggi vs terendah (dihitung berapa bulan kerja) | ekonomi | perbandingan-dekat | 5 | 3 | 5 | 5 | 5 | 23 | momen penetapan UMP akhir tahun; menguji ulang H1 |
 | Kalau penduduk Jawa disebar rata ke semua pulau, Kalimantan jadi sepadat apa? | penduduk | kalau | 4 | 4 | 5 | 5 | 2 | 20 | komentar transmigrasi |
 | Provinsimu tumbuh paling cepat? Pertumbuhan penduduk per provinsi (BPS) | penduduk | kamu-di-mana | 5 | 3 | 5 | 5 | 2 | 20 | pola komentar "... hadir" |
 | Sekuel video lama: penduduk tiap pulau, data terbaru | penduduk | peringkat | 4 | 3 | 5 | 4 | 2 | 18 | video terlaris channel (19.290 views) |
@@ -57,4 +56,5 @@ Topik video panjang [user]: dikembangkan dari **Short dengan performa terbaik** 
 | Short sumber | Views (tanggal data) | Pertanyaan besar video panjang | Status |
 |---|---|---|---|
 | Video lama Q_wNa5JrUEk "Jumlah Penduduk Tiap Pulau" | 19.203 (2026-11-26) | Kenapa lebih dari separuh orang Indonesia tinggal di Jawa? (sebaran penduduk per pulau, sejarah, transmigrasi) | **sudah: L001** (tayang 2026-11-28) |
+| 007 "Dari 8 Jadi 38 Provinsi" (lonjakan 6,7x median) | 9.375 (2026-11-28, hari ke-0) | Bagaimana Indonesia terbelah jadi 38 provinsi: kenapa Sumatera pecah jadi 10, gelombang pemekaran setelah 1999, dan apakah pemekaran membuat daerah lebih maju? (komentar "provinsiku pecahan dari...") | kandidat |
 | (diisi dari data d3 Short 001-005 dst.) | | | |

@@ -30,7 +30,7 @@ Label asal: **[user]** = keputusan user (hanya diubah bila user minta) · **[ter
 | Judul | frasa yang dicari orang + janji jawaban, maks sekitar 70 karakter (H3: pencarian menggerakkan video terlaris) | [hipotesis] |
 | Thumbnail | 1280x720, peta + 1 angka/kontras besar, maks 4 kata, tanpa watermark; buat 2-3 opsi untuk dipilih user | [hipotesis] |
 | Chapters | wajib di deskripsi: `00:00` pertama, minimal 3 bab, tiap bab minimal 10 dtk (aturan YouTube), dihitung dari `buildTimeline` | **[user]** 2026-11-27 (rancangan disetujui) |
-| Jadwal upload | **Sabtu 19.00 WIB**, 1 per minggu (dijadwalkan manual di YouTube Studio; tanggal+jam di `metadata.md`) | **[user]** 2026-11-27 |
+| Jadwal upload | **dibuat Jumat, tayang Sabtu 19.00 WIB** [user 2026-11-28], 1 per minggu (dijadwalkan manual di YouTube Studio; tanggal+jam di `metadata.md`) | **[user]** 2026-11-27 |
 | Ekspor | `.mp4`, `.srt`, `thumbnail.png`, `metadata.md` ke `D:\Hamdan\Contents\algobyte-explore\videos\long\NNN-nama\` | **[user]** 2026-11-27 |
 
 ## 3. Gaya visual
@@ -57,4 +57,5 @@ Ide berikutnya: durasi 6 vs 10 menit; hook dengan cuplikan hasil akhir vs pertan
 - 2026-11-27: caption wajib tampil di video panjang [user] (sebelumnya [hipotesis] tanpa caption di layar, hanya .srt); L001 dirender ulang dengan caption.
 - 2026-11-27: tag ekspresi DIHAPUS dari naskah video panjang [user: hasilnya jelek]; sempat diwajibkan di hari yang sama. Audio wajib per bab.
 - 2026-11-27: model + voice AI Studio dikunci: gemini-3.8-flash-tts + Charon [user, disetujui di GATE 1 L001].
+- 2026-11-28: video panjang dibuat hari Jumat lalu diupload/tayang Sabtu 19.00 WIB [user].
 - 2026-11-27: resep video panjang pertama ditulis [user]: 1 per minggu Sabtu 19.00 WIB, topik dari Short terbaik, voice dibuat user di Google AI Studio, ekspor ke `videos\long\`.
