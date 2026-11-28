@@ -1,5 +1,5 @@
 ---
-description: Analisis performa mingguan (Shorts berumur 3+ hari dan video panjang berumur 7+ hari yang belum dianalisis) lalu perbarui resep, topik, dan gaya referensi
+description: Analisis performa mingguan (jendela d3 Shorts, d7 video panjang, dan d28 yang sudah lengkap di data Analytics dan belum dianalisis) lalu perbarui resep, topik, dan gaya referensi
 argument-hint: "[opsional: judul/id satu video untuk analisis khusus; kosong = analisis mingguan]"
 ---
 

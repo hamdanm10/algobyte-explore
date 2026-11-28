@@ -66,9 +66,9 @@ Ide berikutnya: durasi 35 dtk vs 42 dtk; tema gelap vs terang; judul pertanyaan 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
 **Metrik utama Shorts [2026-11-28]: engaged views d3 sebagai `idx`** (dibagi median 20 Short sebelumnya di jendela yang sama, `docs/DATA.md` bagian 3), pengaman: subscriber per 1.000 views. Metrik diagnosis (menjelaskan sebab): **pembuka** = Viewed vs Swiped Away bila user menempelnya, kalau tidak proksi `engagedPct` + `earlyRetention` (retensi di 10% durasi); **isi** = % rata-rata ditonton + `dropSec`; sumber trafik, komentar. Bandingkan antar kelompok dengan metrik pembuka yang SAMA jenisnya. Data: `node scripts/yt-report.mjs --due` / `--table`.
 - Bandingkan **median kelompok** dengan median kelompok sebelumnya (minimal 5 video berdata per kelompok; kurang dari itu tetap [hipotesis]).
-- Kelompok yang diuji **lebih baik** (median metrik pembuka +5 poin atau lebih, atau median % ditonton +8 poin atau lebih): label naik ke [terbukti 1]. Bila terulang di kelompok lain: [terbukti 2] dan **masuk resep tetap**.
+- Kelompok yang diuji **lebih baik** bila median `idx` d3 naik 0,25 atau lebih dibanding kelompok pembanding DAN subscriber per 1.000 views tidak turun. Metrik diagnosis menjelaskan sebabnya (patokan selisih berarti: metrik pembuka +5 poin, % ditonton +8 poin); diagnosis yang membaik tanpa `idx` naik tetap [hipotesis]. Bila lebih baik: label naik ke [terbukti 1]. Bila terulang di kelompok lain: [terbukti 2] dan **masuk resep tetap**.
 - **Gaya referensi / sekuel topik:** video dengan `idx` d3 2,0 atau lebih DAN `engagedPct` (atau Viewed vs Swiped Away) tidak di bawah median. Lonjakan di hari 0-7 (`yt-report.mjs` status) cukup untuk sekuel topik, belum untuk gaya referensi.
-- **Slot jam:** setelah minimal 2 minggu, bandingkan median views d3 per slot (18.45/19.45); usulkan jam lain ke user hanya bila selisihnya konsisten.
+- **Slot jam:** setelah minimal 2 minggu, bandingkan median `idx` d3 per slot (18.45/19.45); usulkan jam lain ke user hanya bila selisihnya konsisten.
 - **Lebih buruk** dengan selisih yang sama: kembalikan ke nilai sebelumnya, catat di "Riwayat" sebagai "sudah dicoba, kurang".
 - Selisih kecil: tetap [hipotesis], boleh diuji lagi dengan topik lain.
 - Masukan user selalu menang atas data; data hanya mengusulkan perubahan, user memutuskan di GATE 1.

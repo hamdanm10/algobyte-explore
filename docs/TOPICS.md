@@ -43,7 +43,7 @@ Skor tambahan yang dipertimbangkan: apakah topik **dicari orang di YouTube/Googl
 Hapus baris yang sudah dibuat (pindahkan ke `docs/VIDEOS.md`). Tambah ide baru dari komentar (`node scripts/yt-report.mjs --comments`), istilah pencarian (`--video=<no>`), berita, dan hasil analisis.
 
 ## 5. Skor pilar dan angle dari data (diisi `/analyze-video` mingguan)
-| Pilar/angle | Video | Median views d3 | Median Viewed vs Swiped Away | Median % ditonton | Catatan |
+| Pilar/angle | Video | Median `idx` d3 | Median engagedPct | Median % ditonton | Catatan |
 |---|---|---|---|---|---|
 | (belum ada data d3) | | | | | |
 

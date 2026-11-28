@@ -16,6 +16,7 @@ Jadwal: sekali seminggu, mencakup jendela yang sudah lengkap di data Analytics d
 (belum ada)
 
 ## Jadwal awal K0 (sebelum sistem mingguan)
+**Arsip, sudah digantikan** (2026-11-28): jadwal analisis sekarang otomatis dari `node scripts/yt-report.mjs` (jendela lengkap di data Analytics, sekitar hari ke-5/6 untuk d3). "Viewed vs Swiped Away" di catatan per video di bawah sekarang opsional; proksinya `engagedPct` + `earlyRetention`.
 | Video | Upload | Analisis 1 (hari ke-3/4: Shorts bisa naik sampai hari ke-4) | Analisis 2 (sekitar hari ke-28: dorongan algoritma meluruh sekitar 28-30 hari) |
 |---|---|---|---|
 | 001 Top 5 Provinsi Penduduk Terbanyak [zDx3ss62WdE] | 2026-11-25 | 2026-11-28/29 | sekitar 2026-12-23 |
