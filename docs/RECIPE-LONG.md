@@ -16,7 +16,7 @@ Label asal: **[user]** = keputusan user (hanya diubah bila user minta) · **[ter
 ## 2. Pengaturan yang dioptimalkan oleh data
 | Dimensi | Nilai aktif | Asal |
 |---|---|---|
-| Topik | dikembangkan dari **Short dengan performa terbaik** (views/komentar tertinggi di log atau `channel-stats.mjs`) yang belum pernah dijadikan video panjang; video panjang dari topik baru baru dicoba setelah ada beberapa video panjang berdata | **[user]** 2026-11-27 |
+| Topik | dikembangkan dari **Short dengan performa terbaik** (`idx` d3/d28 dan subscriber per 1.000 views tertinggi di `yt-report.mjs --table --format=short`, atau Short dengan LONJAKAN) yang belum pernah dijadikan video panjang; video panjang dari topik baru baru dicoba setelah ada beberapa video panjang berdata | **[user]** 2026-11-27 |
 | Voice | **dibuat user sendiri di Google AI Studio** (Gemini TTS, gratis): Claude menyerahkan naskah siap tempel, user menyimpan audio di project, Claude memprosesnya (`scripts/import-voice.mjs`). Tidak memakai ElevenLabs | **[user]** 2026-11-27 |
 | Model + voice AI Studio | **`gemini-3.8-flash-tts` + Charon** ("Informative"), sama untuk semua bab dan semua video; style instruction: "Narrate in Indonesian like a curious, relaxed documentary storyteller: warm and clear, moderately brisk pace, short natural pauses only between sentences." | **[user]** 2026-11-27 (GATE 1 L001) |
 | Ekspresi voice | **tanpa tag ekspresi** (`<laugh>`, `<breath>`, dsb.) di naskah video panjang: hasilnya jelek menurut user. Naskah AI Studio = teks bersih; ekspresi hanya dari style instruction + tanda baca. Satu file audio per bab (jangan satu audio penuh) | **[user]** 2026-11-27 |
@@ -47,7 +47,7 @@ Satu video per minggu, jadi satu kelompok = **1 variabel untuk 3-4 video panjang
 Ide berikutnya: durasi 6 vs 10 menit; hook dengan cuplikan hasil akhir vs pertanyaan saja; satu voice AI Studio vs voice lain.
 
 ## 5. Aturan keputusan (dijalankan oleh `/analyze-video`)
-Metrik utama video panjang: **klik** = CTR impresi thumbnail (hanya dari YouTube Studio, ditempel user bila diminta) dan **isi** = rata-rata durasi ditonton + % ditonton + retensi detik ke-30 (`yt-analytics.mjs --retention`). Pendukung: views d7/d28, subscriber didapat per 1.000 views, sumber trafik (pencarian vs disarankan vs Shorts), komentar.
+**Metrik utama video panjang [2026-11-28]: jam tonton d7 (awal) dan d28 (utama) sebagai `idx`** terhadap median video panjang sebelumnya (`docs/DATA.md` bagian 3; `idx` baru terisi setelah 5 video panjang), pengaman: subscriber per 1.000 views. Diagnosis: **klik** = CTR impresi thumbnail (hanya dari YouTube Studio, ditempel user bila diminta, disimpan dengan `scripts/yt-manual.mjs`) dan **isi** = rata-rata durasi ditonton + % ditonton + `retention30s` + `dropSec`; sumber trafik (pencarian vs disarankan vs Shorts), istilah pencarian, komentar. Data: `node scripts/yt-report.mjs --due --format=long` dan `--video=L00N`.
 - Dinilai di **d7** (hari ke-7) dan **d28**, bukan d3: video panjang tumbuh lebih lambat dari Shorts.
 - Kurang dari 3 video panjang berdata: semua tetap [hipotesis]. Bandingkan median kelompok; selisih kecil tetap [hipotesis].
 - Jangan bandingkan angka video panjang dengan Shorts (views, % ditonton) secara langsung; yang boleh dibandingkan lintas format hanya subscriber per 1.000 views.

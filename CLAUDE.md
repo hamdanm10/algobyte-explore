@@ -9,10 +9,11 @@ File ini sengaja ramping karena dimuat tiap prompt. **Jangan taruh status, TODO,
 - Kedua alur terpisah: jangan membuat Short otomatis dari video panjang, jangan memakai resep yang satu untuk yang lain. Penomoran terpisah: Short `NNN` (folder `NNN-slug`), video panjang `L001` (folder `long-NNN-slug`).
 - Jangan mengemas/menghapus sebelum user bilang tidak ada revisi.
 
-Analisis: tahap 0 kedua command otomatis menjalankan analisis bila sudah jatuh tempo (user tidak perlu ingat). Manual: `/analyze-video` **mingguan** (Short berumur 3+ hari, video panjang 7+ hari; d28 untuk yang berumur sekitar 28 hari), dua format dianalisis terpisah. Hasilnya (hipotesis, bukan aturan) memperbarui `docs/RECIPE.md`, `docs/RECIPE-LONG.md`, `docs/TOPICS.md`, `docs/PERFORMANCE.md`, dan log.
+Analisis: tahap 0 kedua command selalu menyinkronkan data (`yt-sync.mjs`) dan otomatis menjalankan analisis bila sudah jatuh tempo (user tidak perlu ingat). Manual: `/analyze-video` **mingguan** (jendela d3 Shorts / d7 video panjang / d28 yang sudah lengkap di data Analytics), dua format dianalisis terpisah. Hasilnya (hipotesis, bukan aturan) memperbarui `docs/RECIPE.md`, `docs/RECIPE-LONG.md`, `docs/TOPICS.md`, `docs/PERFORMANCE.md`, dan log.
 
 ## Di mana mencari apa
-- **Setiap video = perbaikan dari video sebelumnya:** resep aktif Shorts di `docs/RECIPE.md`, video panjang di `docs/RECIPE-LONG.md`; pengaturan + metrik per video (JSON, kolom `format`) di `docs/production-log.jsonl`. Eksperimen per **kelompok**, bukan per video: Shorts 6-8 video, video panjang 3-4 video.
+- **Setiap video = perbaikan dari video sebelumnya:** resep aktif Shorts di `docs/RECIPE.md`, video panjang di `docs/RECIPE-LONG.md`; pengaturan + ciri konten per video (JSON, kolom `format`) di `docs/production-log.jsonl`, metrik di `data/youtube.db`. Eksperimen per **kelompok**, bukan per video: Shorts 6-8 video, video panjang 3-4 video.
+- Data YouTube (database lokal `data/youtube.db`, sinkron, metrik utama, baseline, lonjakan, ciri konten `features`): `docs/DATA.md`. Jangan membaca database/log mentah untuk analisis; pakai `scripts/yt-report.mjs`.
 - Topik dan tema (pilar, angle, skor ide, 1 eksploitasi + 1 eksplorasi per hari, kandidat video panjang): `docs/TOPICS.md`.
 - Daftar semua video + gaya visualnya (tabel Shorts dan video panjang): `docs/VIDEOS.md`. Gaya dengan data bagus jadi gaya referensi; palet/font/elemen khas wajib beda dari 10 Short terakhir (video panjang: 5 video panjang terakhir); selalu map animation.
 - Konteks channel (niche, tier, tujuan, data video lama, cara ambil data API): `docs/CHANNEL.md`.
@@ -31,7 +32,7 @@ src/Root.tsx            daftarkan video yang sedang dikerjakan (dihapus saat vid
 src/shared/             reusable: lib/{map,color,timeline,sphere}.ts, components/{Sfx,Music,Captions,DotMap,Watermark}.tsx, data/{idn-provinces,world-countries}.json
 src/videos/NNN-slug/    SEMENTARA selama Short dikerjakan; video panjang: src/videos/long-NNN-slug/ (dihapus setelah dikemas ke D:)
 public/sfx/ public/music/   perpustakaan bersama + katalog index/detail (dua JSON)
-scripts/                alat generik (gen-voice, import-voice, verify-voice, voice-qa, gen-captions, gen-srt, gen-sfx, gen-music, package-video, usage-report, channel-stats, fetch-comments, build-geo, build-world)
+scripts/                alat generik (gen-voice, import-voice, verify-voice, voice-qa, gen-captions, gen-srt, gen-sfx, gen-music, package-video, usage-report, yt-sync, yt-report, yt-manual, recent-styles, build-geo, build-world)
 out/NNN-slug/ out/long-NNN-slug/   hasil render sementara
 docs/                   dokumentasi; .claude/commands/ command project; .env berisi API key
 ```
@@ -63,4 +64,4 @@ docs/                   dokumentasi; .claude/commands/ command project; .env ber
 
 ## YouTube API
 - **Tidak ada upload otomatis via API** (keputusan user 2026-11-26): upload dan penjadwalan selalu manual oleh user di YouTube Studio. Jangan membuat skrip upload atau meminta scope upload.
-- `YOUTUBE_API_KEY` hanya untuk data publik (views, like, komentar). Metrik privat: `scripts/yt-analytics.mjs` (OAuth read-only `yt-analytics.readonly`, login dengan `scripts/yt-oauth.mjs`, token di `.env`; app sengaja tetap mode **Testing** (keputusan user 2026-11-26), jadi token kedaluwarsa sekitar 7 hari: saat `invalid_grant`, minta user menjalankan `! node --env-file=.env scripts/yt-oauth.mjs`). Viewed vs Swiped Away tidak ada di API dan opsional (proksi: engaged views / views + retensi awal); user menempelnya hanya bila diminta.
+- `YOUTUBE_API_KEY` hanya untuk data publik (views, like, komentar). Metrik privat: `scripts/yt-sync.mjs` (OAuth read-only `yt-analytics.readonly`, login dengan `scripts/yt-oauth.mjs`, token di `.env`; app sengaja tetap mode **Testing** (keputusan user 2026-11-26), jadi token kedaluwarsa sekitar 7 hari: saat `invalid_grant`, minta user menjalankan `! node --env-file=.env scripts/yt-oauth.mjs`). Viewed vs Swiped Away tidak ada di API dan opsional (proksi: engaged views / views + retensi awal); user menempelnya hanya bila diminta.

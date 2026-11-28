@@ -1,8 +1,7 @@
 # Performa video dan pelajaran
 
-Diisi oleh `/analyze-video` (mingguan). `/create-short-video` dan `/create-long-video` tahap 1 membaca bagian "Pelajaran aktif" sebagai hipotesis. Pelajaran berlaku untuk Shorts kecuali ditandai "(panjang)". Keputusan resep ada di `docs/RECIPE.md` (Shorts) dan `docs/RECIPE-LONG.md` (video panjang), skor topik di `docs/TOPICS.md`, angka per video di `docs/production-log.jsonl`.
-Statistik publik otomatis: `node --env-file=.env scripts/channel-stats.mjs` (snapshot di `docs/performance/snapshots.jsonl`).
-Metrik privat (Viewed vs Swiped Away, retensi, sumber trafik) ditempel user dari YouTube Studio saat analisis.
+Diisi oleh `/analyze-video` (mingguan). `/create-short-video` dan `/create-long-video` tahap 1 membaca bagian "Pelajaran aktif" sebagai hipotesis. Pelajaran berlaku untuk Shorts kecuali ditandai "(panjang)". Keputusan resep ada di `docs/RECIPE.md` (Shorts) dan `docs/RECIPE-LONG.md` (video panjang), skor topik di `docs/TOPICS.md`, pengaturan + ciri konten per video di `docs/production-log.jsonl`, angka per video di `data/youtube.db`.
+Data (publik + privat) disinkronkan otomatis ke `data/youtube.db` oleh `scripts/yt-sync.mjs`; ringkasan lewat `scripts/yt-report.mjs` (`docs/DATA.md`). Viewed vs Swiped Away dan CTR thumbnail hanya ditempel user bila diminta.
 
 ## Pelajaran aktif
 Aturan: maksimal 10 butir; perbarui atau hapus yang usang. Tiap butir diberi tingkat keyakinan dan jumlah video yang mendukungnya.
@@ -13,7 +12,7 @@ Aturan: maksimal 10 butir; perbarui atau hapus yang usang. Tiap butir diberi tin
 - H3 (sedang, 2 video, data YouTube Analytics 2026-11-26): **video terlaris (Q_wNa5JrUEk, 19.203 views) 69,6% datang dari Pencarian YouTube**, hanya 16,4% dari feed Shorts; video UMK (3.354 views) 81,2% dari feed Shorts. Artinya keunggulan video penduduk tiap pulau kemungkinan besar karena **permintaan pencarian** ("jumlah penduduk tiap pulau"), bukan karena feed Shorts menyukainya; ini merevisi H1. Retensi justru lebih baik di video UMK (rata-rata ditonton 84,4% vs 68,2%). Aksi: judul/deskripsi memakai frasa yang dicari orang; sebagian topik dipilih karena ada permintaan pencarian yang awet (evergreen).
 
 ## Analisis mingguan (terbaru di atas)
-Jadwal: sekali seminggu, mencakup Short berumur 3+ hari yang `metrics.d3`-nya kosong, video panjang berumur 7+ hari yang `metrics.d7`-nya kosong, dan video berumur sekitar 28 hari (`d28`). Analisis pertama: **2026-11-28/29** (001, 002, 004; plus 003 dan 005 bila sudah tayang 3 hari).
+Jadwal: sekali seminggu, mencakup jendela yang sudah lengkap di data Analytics dan `analyzed`-nya kosong (Shorts d3/d28, video panjang d7/d28; `node scripts/yt-report.mjs --due`). Karena data Analytics tertinggal 2-3 hari, d3 sebuah Short siap sekitar hari ke-5/6. Analisis pertama: sekitar **2026-11-29/30** (001, 002, 004, lalu 005).
 (belum ada)
 
 ## Jadwal awal K0 (sebelum sistem mingguan)
